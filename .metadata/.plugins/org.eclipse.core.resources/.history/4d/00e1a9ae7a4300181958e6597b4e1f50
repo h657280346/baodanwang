@@ -1,0 +1,112 @@
+package com.baodanwang.service.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.StoresMapper;
+import com.baodanwang.pojo.Stores;
+import com.baodanwang.pojo.StoresExample;
+import com.baodanwang.service.StoresService;
+
+@Service("storesService")
+public class StoresServiceImpl implements StoresService {
+
+	@Autowired
+	private StoresMapper storesMapper = null;
+
+	@Override
+	public List<Stores> getStoreList(String sidx, String sord) throws Exception {
+		StoresExample example = new StoresExample();
+		example.setOrderByClause(sidx + " " + sord);
+		List<Stores> stores = storesMapper.selectByExample(example);
+		return stores;
+	}
+
+	@Override
+	public void deleteStore(String storeId) throws Exception {
+		storesMapper.deleteByPrimaryKey(storeId);
+	}
+
+	@Override
+	public List<Stores> searchStore(String searchField, String searchString, String sidx, String sord)
+			throws Exception {
+		StoresExample example = new StoresExample();
+		StoresExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx + " " + sord);
+		switch (searchField) {
+		case "store_id":
+			criteria.andStoreIdLike("%" + searchString + "%");
+			break;
+		case "store_openid":
+			criteria.andStoreOpenidLike("%" + searchString + "%");
+			break;
+		case "store_name":
+			criteria.andStoreNameLike("%" + searchString + "%");
+			break;
+		case "store_address":
+			criteria.andStoreAddressLike("%" + searchString + "%");
+			break;
+		case "store_tel":
+			criteria.andStoreTelLike("%" + searchString + "%");
+			break;
+		case "store_weChatId":
+			criteria.andStoreWechatidLike("%" + searchString + "%");
+			break;
+		case "store_realNameStatus":
+			criteria.andStoreRealnamestatusLike("%" + searchString + "%");
+			break;
+		case "store_realName":
+			criteria.andStoreRealnameLike("%" + searchString + "%");
+			break;
+		case "store_realNameType":
+			criteria.andStoreRealnametypeLike("%" + searchString + "%");
+			break;
+		case "balance":
+			criteria.andBalanceLike("%" + searchString + "%");
+			break;
+		case "store_addTime":
+			criteria.andStoreAddtimeLike("%" + searchString + "%");
+			break;
+		default:
+			break;
+		}
+		List<Stores> stores = storesMapper.selectByExample(example);
+		return stores;
+	}
+
+	@Override
+	public Stores getStore(String storeOpenid, String storeName,String storeAvatarurl) throws Exception {
+		StoresExample example = new StoresExample();
+		StoresExample.Criteria criteria = example.createCriteria();
+		criteria.andStoreOpenidEqualTo(storeOpenid);
+		List<Stores> stores = storesMapper.selectByExample(example);
+		Stores store = new Stores();
+		if (stores.size() > 0) {
+			store.setStoreName(storeName);
+			store.setStoreAvatarurl(storeAvatarurl);
+			storesMapper.updateByExample(store, example);
+			List<Stores> stores1 = storesMapper.selectByExample(example);
+			return stores1.get(0);
+		} else {
+			UUID storeId = UUID.randomUUID();
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String date1 = sdf.format(date);
+			store.setStoreId(String.valueOf(storeId));
+			store.setStoreOpenid(storeOpenid);
+			store.setStoreName(storeName);
+			store.setStoreAvatarurl(storeAvatarurl);
+			store.setStoreAddtime(date1);
+			store.setBalance("0");
+			storesMapper.insert(store);
+			List<Stores> stores1 = storesMapper.selectByExample(example);
+			return stores1.get(0);
+		}
+	}
+
+}

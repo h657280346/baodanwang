@@ -1,0 +1,21 @@
+package xml;
+
+import java.sql.Connection;
+import org.jdom.Attribute;
+import org.jdom.Comment;
+import org.jdom.Document;
+import org.jdom.Element;
+
+public class XmlTest1 {
+
+	private String username;
+	private String password;
+	private String driver;
+	private String url;
+	private String sql;
+	private Connection conn;
+	Document document = new Document();
+	Element root = new Element("root");
+	
+	
+}

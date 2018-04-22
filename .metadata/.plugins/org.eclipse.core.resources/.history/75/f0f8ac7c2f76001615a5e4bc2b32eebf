@@ -1,0 +1,93 @@
+package client;
+
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+
+public class RegFrame extends JFrame{
+
+	JEditorPane pane;
+	// 用于选择皮肤时传递参数
+	Object ob;
+    //用于截图时标记本地保存名 
+	int b=0;
+	public RegFrame() throws Exception{
+		this.setBounds(220,120, 400, 300);
+		this.setResizable(false);
+		this.setLayout(null);
+		this.setTitle("注册");
+		Image image = ImageIO.read(new File("C:/Users/guiqi/Desktop/53368076201301232000348764056757463_014.jpg"));
+		this.setIconImage(image);
+		Font font = new Font("宋体",Font.BOLD,18);
+		this.setFont(font);
+		JLabel jl1 = new JLabel("密码");
+		jl1.setBounds(50, 50, 50, 30);
+		jl1.setFont(font);
+		JLabel jl2 = new JLabel("昵称");
+		jl2.setBounds(50, 100, 50, 30);
+		jl2.setFont(font);
+		JLabel jl3 = new JLabel("手机号");
+		jl3.setBounds(50, 150, 60, 30);
+		jl3.setFont(font);
+		JTextField jf1= new JTextField();
+		jf1.setBounds(150, 50, 180, 30);
+		jf1.setFont(font);
+		JTextField jf2= new JTextField();
+		jf2.setBounds(150, 100, 180, 30);
+		jf2.setFont(font);
+		JTextField jf3= new JTextField();
+		jf3.setBounds(150, 150, 180, 30);
+		jf3.setFont(font);
+		JButton jb = new JButton("注册");
+		jb.setBounds(210, 210, 120, 30);
+		jb.setFont(font);
+		this.add(jl1);
+		this.add(jl2);
+		this.add(jl3);
+		this.add(jf1);
+		this.add(jf2);
+		this.add(jf3);
+		this.add(jb);
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e){
+				LoginFrame.frame.setEnabled(true);
+			}
+		});
+		this.setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					try {
+						UIManager.setLookAndFeel(new org.jvnet.substance.skin.SubstanceOfficeBlue2007LookAndFeel());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					new RegFrame();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+	}
+}

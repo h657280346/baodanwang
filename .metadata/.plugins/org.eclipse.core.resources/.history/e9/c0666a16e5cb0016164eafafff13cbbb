@@ -1,0 +1,14 @@
+package aaa;
+
+public class Rectangle {
+	private int whdth ;
+	private int height ;
+	public Rectangle(int width,int height){
+		this.whdth = width;
+		this.height = height;
+	}
+	public Rectangle(){
+		this.whdth = 10;
+		this.height = 10;
+	}
+}

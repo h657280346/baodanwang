@@ -1,0 +1,37 @@
+package thread;
+
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+
+public class TextAtomicReference {
+
+	static ArrayList<B> list = new ArrayList<B>();
+	public static A a = new A(new B(-1));
+	public static int i = 0;
+	public static B b = new B(-1);
+	public static AtomicReference<B> ar = new AtomicReference<B>(b);
+	public static void main(String[] args) {
+		for (; i < 1000; ++i) {
+			B b1 = new B(i);
+			list.add(b1);	
+			}
+		for ( i = 0; i < 1000; ++i) {
+			new Thread(new Runnable() {
+				public void run() {
+					change(list.get(i-1));
+				}
+			}).start();
+			}
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println(b.getId());
+	}
+	public static void change(B b1){
+		ar.set(b1);
+		a.setB(b);
+//		a.setB(b1);线程不安全
+	}					
+}

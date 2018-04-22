@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baodanwang.mapper.StoresMapper" >
+  <resultMap id="BaseResultMap" type="com.baodanwang.pojo.Stores" >
+    <id column="store_id" property="storeId" jdbcType="VARCHAR" />
+    <result column="store_name" property="storeName" jdbcType="VARCHAR" />
+    <result column="store_avatarUrl" property="storeAvatarurl" jdbcType="VARCHAR" />
+    <result column="store_realNameStatus" property="storeRealnamestatus" jdbcType="VARCHAR" />
+    <result column="store_weChatId" property="storeWechatid" jdbcType="VARCHAR" />
+    <result column="store_QRCode" property="storeQrcode" jdbcType="VARCHAR" />
+    <result column="store_address" property="storeAddress" jdbcType="VARCHAR" />
+    <result column="store_realName" property="storeRealname" jdbcType="VARCHAR" />
+    <result column="store_tel" property="storeTel" jdbcType="VARCHAR" />
+    <result column="store_openid" property="storeOpenid" jdbcType="VARCHAR" />
+    <result column="store_certificationPicture" property="storeCertificationpicture" jdbcType="VARCHAR" />
+    <result column="store_realNameType" property="storeRealnametype" jdbcType="VARCHAR" />
+    <result column="store_addTime" property="storeAddtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    store_id, store_name, store_avatarUrl, store_realNameStatus, store_weChatId, store_QRCode, 
+    store_address, store_realName, store_tel, store_openid, store_certificationPicture, 
+    store_realNameType, store_addTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baodanwang.pojo.StoresExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from stores
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from stores
+    where store_id = #{storeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from stores
+    where store_id = #{storeId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baodanwang.pojo.StoresExample" >
+    delete from stores
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baodanwang.pojo.Stores" >
+    insert into stores (store_id, store_name, store_avatarUrl, 
+      store_realNameStatus, store_weChatId, store_QRCode, 
+      store_address, store_realName, store_tel, 
+      store_openid, store_certificationPicture, 
+      store_realNameType, store_addTime)
+    values (#{storeId,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{storeAvatarurl,jdbcType=VARCHAR}, 
+      #{storeRealnamestatus,jdbcType=VARCHAR}, #{storeWechatid,jdbcType=VARCHAR}, #{storeQrcode,jdbcType=VARCHAR}, 
+      #{storeAddress,jdbcType=VARCHAR}, #{storeRealname,jdbcType=VARCHAR}, #{storeTel,jdbcType=VARCHAR}, 
+      #{storeOpenid,jdbcType=VARCHAR}, #{storeCertificationpicture,jdbcType=VARCHAR}, 
+      #{storeRealnametype,jdbcType=VARCHAR}, #{storeAddtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baodanwang.pojo.Stores" >
+    insert into stores
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="storeAvatarurl != null" >
+        store_avatarUrl,
+      </if>
+      <if test="storeRealnamestatus != null" >
+        store_realNameStatus,
+      </if>
+      <if test="storeWechatid != null" >
+        store_weChatId,
+      </if>
+      <if test="storeQrcode != null" >
+        store_QRCode,
+      </if>
+      <if test="storeAddress != null" >
+        store_address,
+      </if>
+      <if test="storeRealname != null" >
+        store_realName,
+      </if>
+      <if test="storeTel != null" >
+        store_tel,
+      </if>
+      <if test="storeOpenid != null" >
+        store_openid,
+      </if>
+      <if test="storeCertificationpicture != null" >
+        store_certificationPicture,
+      </if>
+      <if test="storeRealnametype != null" >
+        store_realNameType,
+      </if>
+      <if test="storeAddtime != null" >
+        store_addTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAvatarurl != null" >
+        #{storeAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRealnamestatus != null" >
+        #{storeRealnamestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="storeWechatid != null" >
+        #{storeWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="storeQrcode != null" >
+        #{storeQrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddress != null" >
+        #{storeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRealname != null" >
+        #{storeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="storeTel != null" >
+        #{storeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="storeOpenid != null" >
+        #{storeOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCertificationpicture != null" >
+        #{storeCertificationpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRealnametype != null" >
+        #{storeRealnametype,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddtime != null" >
+        #{storeAddtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baodanwang.pojo.StoresExample" resultType="java.lang.Integer" >
+    select count(*) from stores
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update stores
+    <set >
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeName != null" >
+        store_name = #{record.storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeAvatarurl != null" >
+        store_avatarUrl = #{record.storeAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeRealnamestatus != null" >
+        store_realNameStatus = #{record.storeRealnamestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeWechatid != null" >
+        store_weChatId = #{record.storeWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeQrcode != null" >
+        store_QRCode = #{record.storeQrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeAddress != null" >
+        store_address = #{record.storeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeRealname != null" >
+        store_realName = #{record.storeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeTel != null" >
+        store_tel = #{record.storeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeOpenid != null" >
+        store_openid = #{record.storeOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeCertificationpicture != null" >
+        store_certificationPicture = #{record.storeCertificationpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeRealnametype != null" >
+        store_realNameType = #{record.storeRealnametype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeAddtime != null" >
+        store_addTime = #{record.storeAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update stores
+    set store_id = #{record.storeId,jdbcType=VARCHAR},
+      store_name = #{record.storeName,jdbcType=VARCHAR},
+      store_avatarUrl = #{record.storeAvatarurl,jdbcType=VARCHAR},
+      store_realNameStatus = #{record.storeRealnamestatus,jdbcType=VARCHAR},
+      store_weChatId = #{record.storeWechatid,jdbcType=VARCHAR},
+      store_QRCode = #{record.storeQrcode,jdbcType=VARCHAR},
+      store_address = #{record.storeAddress,jdbcType=VARCHAR},
+      store_realName = #{record.storeRealname,jdbcType=VARCHAR},
+      store_tel = #{record.storeTel,jdbcType=VARCHAR},
+      store_openid = #{record.storeOpenid,jdbcType=VARCHAR},
+      store_certificationPicture = #{record.storeCertificationpicture,jdbcType=VARCHAR},
+      store_realNameType = #{record.storeRealnametype,jdbcType=VARCHAR},
+      store_addTime = #{record.storeAddtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baodanwang.pojo.Stores" >
+    update stores
+    <set >
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAvatarurl != null" >
+        store_avatarUrl = #{storeAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRealnamestatus != null" >
+        store_realNameStatus = #{storeRealnamestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="storeWechatid != null" >
+        store_weChatId = #{storeWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="storeQrcode != null" >
+        store_QRCode = #{storeQrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddress != null" >
+        store_address = #{storeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRealname != null" >
+        store_realName = #{storeRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="storeTel != null" >
+        store_tel = #{storeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="storeOpenid != null" >
+        store_openid = #{storeOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCertificationpicture != null" >
+        store_certificationPicture = #{storeCertificationpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRealnametype != null" >
+        store_realNameType = #{storeRealnametype,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddtime != null" >
+        store_addTime = #{storeAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where store_id = #{storeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baodanwang.pojo.Stores" >
+    update stores
+    set store_name = #{storeName,jdbcType=VARCHAR},
+      store_avatarUrl = #{storeAvatarurl,jdbcType=VARCHAR},
+      store_realNameStatus = #{storeRealnamestatus,jdbcType=VARCHAR},
+      store_weChatId = #{storeWechatid,jdbcType=VARCHAR},
+      store_QRCode = #{storeQrcode,jdbcType=VARCHAR},
+      store_address = #{storeAddress,jdbcType=VARCHAR},
+      store_realName = #{storeRealname,jdbcType=VARCHAR},
+      store_tel = #{storeTel,jdbcType=VARCHAR},
+      store_openid = #{storeOpenid,jdbcType=VARCHAR},
+      store_certificationPicture = #{storeCertificationpicture,jdbcType=VARCHAR},
+      store_realNameType = #{storeRealnametype,jdbcType=VARCHAR},
+      store_addTime = #{storeAddtime,jdbcType=VARCHAR}
+    where store_id = #{storeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

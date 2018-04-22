@@ -1,0 +1,64 @@
+package com.baodanwang.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.baodanwang.pojo.Homeimage;
+import com.baodanwang.service.HomeImageService;
+
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
+
+@Controller
+public class HomeImageController {
+
+	@Autowired
+	private HomeImageService homeImageService;
+
+	@ResponseBody
+	@RequestMapping(value = "/getHomeImage", method = RequestMethod.POST)
+	public JSON getHomeImage(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		Homeimage homeimage = homeImageService.getHomeImage();
+		String image = homeimage.getHomeImage();
+		homeimage.setHomeImage("http://7vnk87.natappfree.cc/baodanwang" + image);
+		return JSONObject.fromObject(homeimage);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/uploadHomeImage", method = RequestMethod.POST)
+	public JSON uploadHomeImage(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		 try {  
+	            DiskFileItemFactory factory = new DiskFileItemFactory();  
+	            factory.setSizeThreshold(4096); // 设置缓冲区大小，这里是4kb  
+	            factory.setRepository("./upload");// 设置缓冲区目录    
+	            ServletFileUpload upload = new ServletFileUpload(factory);  
+	  
+	            // Set overall request size constraint  
+	            upload.setSizeMax(4194304); // 设置最大文件尺寸，这里是4MB  
+	  
+	            List<FileItem> items = upload.parseRequest(request);// 得到所有的文件  
+	            Iterator<FileItem> i = items.iterator();  
+	            while (i.hasNext()) {  
+	                FileItem fi = (FileItem) i.next();  
+	                String fileName = fi.getName();  
+	                if (fileName != null) {  
+	                    File fullFile = new File(new String(fi.getName().getBytes(), "utf-8")); // 解决文件名乱码问题  
+	                    File savedFile = new File(uploadPath, fullFile.getName());  
+	                    fi.write(savedFile);  
+	                }  
+	            }  
+	            System.out.print("upload succeed");  
+	        } catch (Exception e) {  
+	  
+	        }  
+		return null;
+	}
+}

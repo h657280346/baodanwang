@@ -1,0 +1,183 @@
+package com.baodanwang.pojo;
+
+public class Stores {
+    private String storeId;
+
+    private String storeName;
+
+    private String storeAvatarurl;
+
+    private String storeRealnamestatus;
+
+    private String storeWechatid;
+
+    private String storeQrcode;
+
+    private String storeAddress;
+
+    private String storeRealname;
+
+    private String storeTel;
+
+    private String storeOpenid;
+
+    private String storeCertificationpicture;
+
+    private String storeRealnametype;
+
+    private String storeAddtime;
+
+    private String balance;
+
+    private String storeNickname;
+
+    private String storePickupsite;
+
+    private String storeAddressdetail;
+
+    private String storePickupsitedetail;
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId == null ? null : storeId.trim();
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName == null ? null : storeName.trim();
+    }
+
+    public String getStoreAvatarurl() {
+        return storeAvatarurl;
+    }
+
+    public void setStoreAvatarurl(String storeAvatarurl) {
+        this.storeAvatarurl = storeAvatarurl == null ? null : storeAvatarurl.trim();
+    }
+
+    public String getStoreRealnamestatus() {
+        return storeRealnamestatus;
+    }
+
+    public void setStoreRealnamestatus(String storeRealnamestatus) {
+        this.storeRealnamestatus = storeRealnamestatus == null ? null : storeRealnamestatus.trim();
+    }
+
+    public String getStoreWechatid() {
+        return storeWechatid;
+    }
+
+    public void setStoreWechatid(String storeWechatid) {
+        this.storeWechatid = storeWechatid == null ? null : storeWechatid.trim();
+    }
+
+    public String getStoreQrcode() {
+        return storeQrcode;
+    }
+
+    public void setStoreQrcode(String storeQrcode) {
+        this.storeQrcode = storeQrcode == null ? null : storeQrcode.trim();
+    }
+
+    public String getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress == null ? null : storeAddress.trim();
+    }
+
+    public String getStoreRealname() {
+        return storeRealname;
+    }
+
+    public void setStoreRealname(String storeRealname) {
+        this.storeRealname = storeRealname == null ? null : storeRealname.trim();
+    }
+
+    public String getStoreTel() {
+        return storeTel;
+    }
+
+    public void setStoreTel(String storeTel) {
+        this.storeTel = storeTel == null ? null : storeTel.trim();
+    }
+
+    public String getStoreOpenid() {
+        return storeOpenid;
+    }
+
+    public void setStoreOpenid(String storeOpenid) {
+        this.storeOpenid = storeOpenid == null ? null : storeOpenid.trim();
+    }
+
+    public String getStoreCertificationpicture() {
+        return storeCertificationpicture;
+    }
+
+    public void setStoreCertificationpicture(String storeCertificationpicture) {
+        this.storeCertificationpicture = storeCertificationpicture == null ? null : storeCertificationpicture.trim();
+    }
+
+    public String getStoreRealnametype() {
+        return storeRealnametype;
+    }
+
+    public void setStoreRealnametype(String storeRealnametype) {
+        this.storeRealnametype = storeRealnametype == null ? null : storeRealnametype.trim();
+    }
+
+    public String getStoreAddtime() {
+        return storeAddtime;
+    }
+
+    public void setStoreAddtime(String storeAddtime) {
+        this.storeAddtime = storeAddtime == null ? null : storeAddtime.trim();
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance == null ? null : balance.trim();
+    }
+
+    public String getStoreNickname() {
+        return storeNickname;
+    }
+
+    public void setStoreNickname(String storeNickname) {
+        this.storeNickname = storeNickname == null ? null : storeNickname.trim();
+    }
+
+    public String getStorePickupsite() {
+        return storePickupsite;
+    }
+
+    public void setStorePickupsite(String storePickupsite) {
+        this.storePickupsite = storePickupsite == null ? null : storePickupsite.trim();
+    }
+
+    public String getStoreAddressdetail() {
+        return storeAddressdetail;
+    }
+
+    public void setStoreAddressdetail(String storeAddressdetail) {
+        this.storeAddressdetail = storeAddressdetail == null ? null : storeAddressdetail.trim();
+    }
+
+    public String getStorePickupsitedetail() {
+        return storePickupsitedetail;
+    }
+
+    public void setStorePickupsitedetail(String storePickupsitedetail) {
+        this.storePickupsitedetail = storePickupsitedetail == null ? null : storePickupsitedetail.trim();
+    }
+}

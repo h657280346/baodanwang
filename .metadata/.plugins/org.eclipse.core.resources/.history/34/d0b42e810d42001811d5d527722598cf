@@ -1,0 +1,5 @@
+package com.baodanwang.service.impl;
+
+public interface VideoAndImage {
+
+}

@@ -1,0 +1,22 @@
+package aaa;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class aaa {
+
+	public static void main(String[] args) throws IOException {
+		String s = "相信我一定能通过本次考试！" ;
+		File file = new File("test.txt");
+			FileWriter fw = new FileWriter(file);
+			fw.write(s);
+			BufferedReader bf= new BufferedReader(new FileReader("test.txt"));
+			String ss = bf.readLine();
+			System.out.println(bf);
+	}
+}

@@ -1,0 +1,85 @@
+package com.baodanwang.pojo;
+
+import java.math.BigDecimal;
+
+public class Goods {
+    private String goodId;
+
+    private String storeId;
+
+    private String goodName;
+
+    private String goodShowstatus;
+
+    private BigDecimal goodPrice;
+
+    private BigDecimal goodAdvanceprice;
+
+    private String goodDescribe;
+
+    private String goodAddtime;
+
+    public String getGoodId() {
+        return goodId;
+    }
+
+    public void setGoodId(String goodId) {
+        this.goodId = goodId == null ? null : goodId.trim();
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId == null ? null : storeId.trim();
+    }
+
+    public String getGoodName() {
+        return goodName;
+    }
+
+    public void setGoodName(String goodName) {
+        this.goodName = goodName == null ? null : goodName.trim();
+    }
+
+    public String getGoodShowstatus() {
+        return goodShowstatus;
+    }
+
+    public void setGoodShowstatus(String goodShowstatus) {
+        this.goodShowstatus = goodShowstatus == null ? null : goodShowstatus.trim();
+    }
+
+    public BigDecimal getGoodPrice() {
+        return goodPrice;
+    }
+
+    public void setGoodPrice(BigDecimal goodPrice) {
+        this.goodPrice = goodPrice;
+    }
+
+    public BigDecimal getGoodAdvanceprice() {
+        return goodAdvanceprice;
+    }
+
+    public void setGoodAdvanceprice(BigDecimal goodAdvanceprice) {
+        this.goodAdvanceprice = goodAdvanceprice;
+    }
+
+    public String getGoodDescribe() {
+        return goodDescribe;
+    }
+
+    public void setGoodDescribe(String goodDescribe) {
+        this.goodDescribe = goodDescribe == null ? null : goodDescribe.trim();
+    }
+
+    public String getGoodAddtime() {
+        return goodAddtime;
+    }
+
+    public void setGoodAddtime(String goodAddtime) {
+        this.goodAddtime = goodAddtime == null ? null : goodAddtime.trim();
+    }
+}

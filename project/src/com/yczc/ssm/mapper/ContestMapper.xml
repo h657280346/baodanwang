@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yczc.ssm.mapper.ContestMapper" >
+  <resultMap id="BaseResultMap" type="com.yczc.ssm.pojo.Contest" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="pteamid" property="pteamid" jdbcType="VARCHAR" />
+    <result column="mteamid" property="mteamid" jdbcType="VARCHAR" />
+    <result column="popenid" property="popenid" jdbcType="VARCHAR" />
+    <result column="mopenid" property="mopenid" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
+    <result column="postdate" property="postdate" jdbcType="VARCHAR" />
+    <result column="lng" property="lng" jdbcType="VARCHAR" />
+    <result column="lat" property="lat" jdbcType="VARCHAR" />
+    <result column="adress" property="adress" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="person" property="person" jdbcType="INTEGER" />
+    <result column="clothing" property="clothing" jdbcType="VARCHAR" />
+    <result column="turf" property="turf" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="VARCHAR" />
+    <result column="ensure" property="ensure" jdbcType="INTEGER" />
+    <result column="award" property="award" jdbcType="INTEGER" />
+    <result column="notes" property="notes" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="reasons" property="reasons" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pteamid, mteamid, popenid, mopenid, date, time, week, postdate, lng, lat, adress, 
+    contact, person, clothing, turf, cost, ensure, award, notes, status, reasons
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yczc.ssm.pojo.ContestExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from contest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from contest
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from contest
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yczc.ssm.pojo.ContestExample" >
+    delete from contest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yczc.ssm.pojo.Contest" >
+    insert into contest (id, pteamid, mteamid, 
+      popenid, mopenid, date, 
+      time, week, postdate, 
+      lng, lat, adress, contact, 
+      person, clothing, turf, 
+      cost, ensure, award, 
+      notes, status, reasons
+      )
+    values (#{id,jdbcType=VARCHAR}, #{pteamid,jdbcType=VARCHAR}, #{mteamid,jdbcType=VARCHAR}, 
+      #{popenid,jdbcType=VARCHAR}, #{mopenid,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, 
+      #{time,jdbcType=VARCHAR}, #{week,jdbcType=VARCHAR}, #{postdate,jdbcType=VARCHAR}, 
+      #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{adress,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{person,jdbcType=INTEGER}, #{clothing,jdbcType=VARCHAR}, #{turf,jdbcType=VARCHAR}, 
+      #{cost,jdbcType=VARCHAR}, #{ensure,jdbcType=INTEGER}, #{award,jdbcType=INTEGER}, 
+      #{notes,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{reasons,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yczc.ssm.pojo.Contest" >
+    insert into contest
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pteamid != null" >
+        pteamid,
+      </if>
+      <if test="mteamid != null" >
+        mteamid,
+      </if>
+      <if test="popenid != null" >
+        popenid,
+      </if>
+      <if test="mopenid != null" >
+        mopenid,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="week != null" >
+        week,
+      </if>
+      <if test="postdate != null" >
+        postdate,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="adress != null" >
+        adress,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="person != null" >
+        person,
+      </if>
+      <if test="clothing != null" >
+        clothing,
+      </if>
+      <if test="turf != null" >
+        turf,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="ensure != null" >
+        ensure,
+      </if>
+      <if test="award != null" >
+        award,
+      </if>
+      <if test="notes != null" >
+        notes,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reasons != null" >
+        reasons,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="pteamid != null" >
+        #{pteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="mteamid != null" >
+        #{mteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="popenid != null" >
+        #{popenid,jdbcType=VARCHAR},
+      </if>
+      <if test="mopenid != null" >
+        #{mopenid,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="postdate != null" >
+        #{postdate,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="person != null" >
+        #{person,jdbcType=INTEGER},
+      </if>
+      <if test="clothing != null" >
+        #{clothing,jdbcType=VARCHAR},
+      </if>
+      <if test="turf != null" >
+        #{turf,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=VARCHAR},
+      </if>
+      <if test="ensure != null" >
+        #{ensure,jdbcType=INTEGER},
+      </if>
+      <if test="award != null" >
+        #{award,jdbcType=INTEGER},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reasons != null" >
+        #{reasons,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yczc.ssm.pojo.ContestExample" resultType="java.lang.Integer" >
+    select count(*) from contest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update contest
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pteamid != null" >
+        pteamid = #{record.pteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mteamid != null" >
+        mteamid = #{record.mteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.popenid != null" >
+        popenid = #{record.popenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mopenid != null" >
+        mopenid = #{record.mopenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.week != null" >
+        week = #{record.week,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postdate != null" >
+        postdate = #{record.postdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lng != null" >
+        lng = #{record.lng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lat != null" >
+        lat = #{record.lat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adress != null" >
+        adress = #{record.adress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        contact = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.person != null" >
+        person = #{record.person,jdbcType=INTEGER},
+      </if>
+      <if test="record.clothing != null" >
+        clothing = #{record.clothing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.turf != null" >
+        turf = #{record.turf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cost != null" >
+        cost = #{record.cost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ensure != null" >
+        ensure = #{record.ensure,jdbcType=INTEGER},
+      </if>
+      <if test="record.award != null" >
+        award = #{record.award,jdbcType=INTEGER},
+      </if>
+      <if test="record.notes != null" >
+        notes = #{record.notes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reasons != null" >
+        reasons = #{record.reasons,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update contest
+    set id = #{record.id,jdbcType=VARCHAR},
+      pteamid = #{record.pteamid,jdbcType=VARCHAR},
+      mteamid = #{record.mteamid,jdbcType=VARCHAR},
+      popenid = #{record.popenid,jdbcType=VARCHAR},
+      mopenid = #{record.mopenid,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=VARCHAR},
+      week = #{record.week,jdbcType=VARCHAR},
+      postdate = #{record.postdate,jdbcType=VARCHAR},
+      lng = #{record.lng,jdbcType=VARCHAR},
+      lat = #{record.lat,jdbcType=VARCHAR},
+      adress = #{record.adress,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      person = #{record.person,jdbcType=INTEGER},
+      clothing = #{record.clothing,jdbcType=VARCHAR},
+      turf = #{record.turf,jdbcType=VARCHAR},
+      cost = #{record.cost,jdbcType=VARCHAR},
+      ensure = #{record.ensure,jdbcType=INTEGER},
+      award = #{record.award,jdbcType=INTEGER},
+      notes = #{record.notes,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      reasons = #{record.reasons,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yczc.ssm.pojo.Contest" >
+    update contest
+    <set >
+      <if test="pteamid != null" >
+        pteamid = #{pteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="mteamid != null" >
+        mteamid = #{mteamid,jdbcType=VARCHAR},
+      </if>
+      <if test="popenid != null" >
+        popenid = #{popenid,jdbcType=VARCHAR},
+      </if>
+      <if test="mopenid != null" >
+        mopenid = #{mopenid,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="postdate != null" >
+        postdate = #{postdate,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        adress = #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="person != null" >
+        person = #{person,jdbcType=INTEGER},
+      </if>
+      <if test="clothing != null" >
+        clothing = #{clothing,jdbcType=VARCHAR},
+      </if>
+      <if test="turf != null" >
+        turf = #{turf,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=VARCHAR},
+      </if>
+      <if test="ensure != null" >
+        ensure = #{ensure,jdbcType=INTEGER},
+      </if>
+      <if test="award != null" >
+        award = #{award,jdbcType=INTEGER},
+      </if>
+      <if test="notes != null" >
+        notes = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reasons != null" >
+        reasons = #{reasons,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yczc.ssm.pojo.Contest" >
+    update contest
+    set pteamid = #{pteamid,jdbcType=VARCHAR},
+      mteamid = #{mteamid,jdbcType=VARCHAR},
+      popenid = #{popenid,jdbcType=VARCHAR},
+      mopenid = #{mopenid,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      week = #{week,jdbcType=VARCHAR},
+      postdate = #{postdate,jdbcType=VARCHAR},
+      lng = #{lng,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      adress = #{adress,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      person = #{person,jdbcType=INTEGER},
+      clothing = #{clothing,jdbcType=VARCHAR},
+      turf = #{turf,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=VARCHAR},
+      ensure = #{ensure,jdbcType=INTEGER},
+      award = #{award,jdbcType=INTEGER},
+      notes = #{notes,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      reasons = #{reasons,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count1" parameterType="string" resultType="int">
+		select count(*) from contest where postdate between #{0} and #{1}
+	</select>
+	<select id="count3" parameterType="string" resultType="int">
+		select count(*) from contest  where postdate between #{0} and #{1}
+	</select>
+</mapper>

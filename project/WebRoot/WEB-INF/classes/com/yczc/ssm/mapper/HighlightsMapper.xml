@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yczc.ssm.mapper.HighlightsMapper">
+	<insert id="addHighlights" parameterType="highlights" >
+		insert into highlights values(#{id},#{title},#{picture},#{video},#{time},#{introduction},#{author},0,#{priority},#{figure})
+	</insert>
+	
+	<delete id="deleteHighlights" parameterType="string">
+		delete from highlights where id = #{value} 
+	</delete>
+	
+	<update id="updateHighlights" parameterType="highlights">
+		update highlights set title=#{title},picture=#{picture},video=#{video},introduction = #{introduction},author=#{author},priority=#{priority},figure=#{figure}  where id=#{id}
+	</update>
+	
+	<update id="updateHighlightsView" parameterType="string">
+		update highlights set view = view+1  where id=#{id}
+	</update>
+	<select id="findAllHighlights"  resultType="highlights">
+		select * from highlights order by priority desc
+	</select>
+	<select id="findHighlightsById" parameterType="string" resultType="highlights">
+		select * from highlights where id = #{value}
+	</select>	
+	
+	<select id="count" resultType="int">
+		select count(*) from highlights
+	</select>
+	<select id="findHighlightsByFigure"  resultType="highlights">
+		select * from highlights where figure is not null 
+	</select>
+	
+</mapper>

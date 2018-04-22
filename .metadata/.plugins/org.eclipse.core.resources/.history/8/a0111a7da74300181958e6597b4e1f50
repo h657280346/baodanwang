@@ -1,0 +1,75 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.OrdersMapper;
+import com.baodanwang.pojo.Orders;
+import com.baodanwang.pojo.OrdersExample;
+import com.baodanwang.service.OrdersService;
+
+@Service("ordersService")
+public class OrdersServiceImpl implements OrdersService {
+	
+	@Autowired
+	private OrdersMapper ordersMapper;
+
+	@Override
+	public List<Orders> getOrderList(String sidx, String sord) throws Exception {
+		OrdersExample example = new OrdersExample();
+		example.setOrderByClause(sidx + " " + sord);
+		List<Orders> orders = ordersMapper.selectByExample(example);
+		return orders;
+	}
+
+	@Override
+	public void deleteOrder(String orderId) throws Exception {
+		ordersMapper.deleteByPrimaryKey(orderId);
+	}
+
+	@Override
+	public List<Orders> searchOrder(String searchField, String searchString, String sidx, String sord) throws Exception {
+		OrdersExample example = new OrdersExample();
+		OrdersExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx + " " + sord);
+		switch (searchField) {
+		case "order_id":
+			criteria.andOrderIdLike("%" + searchString + "%");
+			break;
+		case "bulk_id":
+			criteria.andBulkIdLike("%" + searchString + "%");
+			break;
+		case "user_id":
+			criteria.andUserIdLike("%" + searchString + "%");
+			break;
+		case "order_address":
+			criteria.andOrderAddressLike("%" + searchString + "%");
+			break;
+		case "order_addressDetail":
+			criteria.andorderadd("%" + searchString + "%");
+			break;
+		case "good_advancePrice":
+			criteria.andGoodAdvancepriceEqualTo("%" + searchString + "%");
+			break;
+		case "good_describe":
+			criteria.andGoodDescribeLike("%" + searchString + "%");
+			break;
+		case "good_addTime":
+			criteria.andGoodAddtimeLike("%" + searchString + "%");
+			break;
+		default:
+			break;
+		}
+		List<Orders> orders = ordersMapper.selectByExample(example);
+		return orders;
+	}
+
+	@Override
+	public List<Orders> getOrder(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

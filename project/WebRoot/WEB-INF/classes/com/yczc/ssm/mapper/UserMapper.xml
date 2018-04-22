@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yczc.ssm.mapper.UserMapper">
+	<insert id="addUser" parameterType="user" >
+		insert into user values(#{openId},#{avatarUrl},#{city},#{province},#{country},#{gender},#{nickName},#{time})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="string">
+		delete from user where openId = #{value}
+	</delete>
+	
+	
+	
+	<select id="findAllUser"  resultType="user">
+		select * from user order by time desc
+	</select>
+	<select id="findUserById" parameterType="string" resultType="user">
+		select * from user where openId = #{value}
+	</select>	
+	<select id="findUserByIdAndTime" parameterType="string" resultType="user">
+		select * from user where openId = #{0} and time = #{1}
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from user
+	</select>
+	<select id="count1" parameterType="string" resultType="int">
+		select count(*) from user where time = #{value}
+	</select>
+	<select id="count3" parameterType="string" resultType="int">
+		select count(*) from user  where time between #{0} and #{1}
+	</select>
+	
+</mapper>

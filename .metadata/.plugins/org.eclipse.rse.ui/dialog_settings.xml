@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="RemoteSearchPage">
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="7" key="dataSize"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+	</section>
+	<section name="RemoteSearchPage.data4">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="jqgh_jqgrid_id" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\baodanwang\WebContent" key="folderName"/>
+		<item value="*" key="fileNames"/>
+	</section>
+	<section name="RemoteSearchPage.data3">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="searchmodfbox_jqgrid" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\baodanwang\WebContent" key="folderName"/>
+		<item value="*" key="fileNames"/>
+	</section>
+	<section name="RemoteSearchPage.data6">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="*prmNames *" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\baodanwang\WebContent" key="folderName"/>
+		<item value="*.js" key="fileNames"/>
+	</section>
+	<section name="RemoteSearchPage.data5">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="*jqgh_jqgrid_id*" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\baodanwang\WebContent" key="folderName"/>
+		<item value="*" key="fileNames"/>
+	</section>
+	<section name="RemoteSearchPage.data0">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="index" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\project\src\com\yczc\ssm\controller" key="folderName"/>
+		<item value=".java" key="fileNames"/>
+	</section>
+	<section name="RemoteSearchPage.data2">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="ui-widget ui-widget-content ui-corner-all ui-jqdialog jqmID1" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\baodanwang\WebContent" key="folderName"/>
+		<item value="*" key="fileNames"/>
+	</section>
+	<section name="RemoteSearchPage.data1">
+		<item value="光环and鬼泣" key="profileName"/>
+		<item value="selectopts" key="searchString"/>
+		<item value="true" key="includeArchives"/>
+		<item value="false" key="fileNameRegex"/>
+		<item value="false" key="caseSensitive"/>
+		<item value="true" key="includeSubfolders"/>
+		<item value="false" key="stringRegex"/>
+		<item value="true" key="fileNameCaseSensitive"/>
+		<item value="Local" key="connectionName"/>
+		<item value="C:\Users\guiqi\workspace\baodanwang\WebContent" key="folderName"/>
+		<item value="*" key="fileNames"/>
+	</section>
+</section>

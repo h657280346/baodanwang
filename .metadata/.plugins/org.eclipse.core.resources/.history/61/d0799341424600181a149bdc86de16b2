@@ -1,0 +1,88 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.BulksMapper;
+import com.baodanwang.pojo.Bulks;
+import com.baodanwang.pojo.BulksExample;
+import com.baodanwang.service.BulksService;
+
+@Service("bulksService")
+public class BulksServiceImpl implements BulksService {
+
+	@Autowired
+	private BulksMapper bulksMapper;
+
+	@Override
+	public List<Bulks> getBulkList(String sidx, String sord) throws Exception {
+		BulksExample example = new BulksExample();
+		example.setOrderByClause(sidx + " " + sord);
+		List<Bulks> bulks = bulksMapper.selectByExample(example);
+		return bulks;
+	}
+
+	@Override
+	public void deleteBulk(String bulkId) throws Exception {
+		bulksMapper.deleteByPrimaryKey(bulkId);
+
+	}
+
+	@Override
+	public List<Bulks> searchBulk(String searchField, String searchString, String sidx, String sord) throws Exception {
+		BulksExample example = new BulksExample();
+		BulksExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx + " " + sord);
+		switch (searchField) {
+		case "bulk_id":
+			criteria.andBulkIdLike("%" + searchString + "%");
+			break;
+		case "store_id":
+			criteria.andStoreIdLike("%" + searchString + "%");
+			break;
+		case "bulk_status":
+			criteria.andBulkStatusLike("%" + searchString + "%");
+			break;
+		case "bulk_title":
+			criteria.andBulkTitleLike("%" + searchString + "%");
+			break;
+		case "bulk_announcement":
+			criteria.andBulkAnnouncementLike("%" + searchString + "%");
+			break;
+		case "bulk_showStatus":
+			criteria.andBulkShowstatusLike("%" + searchString + "%");
+			break;
+		case "bulk_weChatIdStatus":
+			criteria.andBulkWechatidstatusLike("%" + searchString + "%");
+			break;
+		case "bulk_addTime":
+			criteria.andBulkAddtimeLike("%" + searchString + "%");
+			break;
+		default:
+			break;
+		}
+		List<Bulks> bulks = bulksMapper.selectByExample(example);
+		return bulks;
+	}
+
+	@Override
+	public int insertBulk(Bulks bulk) throws Exception {
+		int result = bulksMapper.insert(bulk);
+		return result;
+	}
+
+	@Override
+	public Bulks getBulk(String bulkId) throws Exception {
+		Bulks bulk = bulksMapper.selectByPrimaryKey(bulkId);
+		return bulk;
+	}
+
+	@Override
+	public int updataBulk(Bulks bulk) throws Exception {
+		int result = bulksMapper.updateByPrimaryKey(bulk);
+		return 0result;
+	}
+
+}

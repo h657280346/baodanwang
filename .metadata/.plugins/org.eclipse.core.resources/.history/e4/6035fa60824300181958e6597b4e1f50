@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baodanwang.mapper.BulksMapper">
+  <resultMap id="BaseResultMap" type="com.baodanwang.pojo.Bulks">
+    <id column="bulk_id" jdbcType="VARCHAR" property="bulkId" />
+    <result column="store_id" jdbcType="VARCHAR" property="storeId" />
+    <result column="bulk_status" jdbcType="VARCHAR" property="bulkStatus" />
+    <result column="bulk_title" jdbcType="VARCHAR" property="bulkTitle" />
+    <result column="bulk_announcement" jdbcType="VARCHAR" property="bulkAnnouncement" />
+    <result column="bulk_picture" jdbcType="VARCHAR" property="bulkPicture" />
+    <result column="bulk_showStatus" jdbcType="VARCHAR" property="bulkShowstatus" />
+    <result column="bulk_weChatIdStatus" jdbcType="VARCHAR" property="bulkWechatidstatus" />
+    <result column="bulk_WeChatCodePicture" jdbcType="VARCHAR" property="bulkWechatcodepicture" />
+    <result column="bulk_addTime" jdbcType="VARCHAR" property="bulkAddtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    bulk_id, store_id, bulk_status, bulk_title, bulk_announcement, bulk_picture, bulk_showStatus, 
+    bulk_weChatIdStatus, bulk_WeChatCodePicture, bulk_addTime
+  </sql>
+  <select id="selectByExample" parameterType="com.baodanwang.pojo.BulksExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bulks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bulks
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bulks
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baodanwang.pojo.BulksExample">
+    delete from bulks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baodanwang.pojo.Bulks">
+    insert into bulks (bulk_id, store_id, bulk_status, 
+      bulk_title, bulk_announcement, bulk_picture, 
+      bulk_showStatus, bulk_weChatIdStatus, bulk_WeChatCodePicture, 
+      bulk_addTime)
+    values (#{bulkId,jdbcType=VARCHAR}, #{storeId,jdbcType=VARCHAR}, #{bulkStatus,jdbcType=VARCHAR}, 
+      #{bulkTitle,jdbcType=VARCHAR}, #{bulkAnnouncement,jdbcType=VARCHAR}, #{bulkPicture,jdbcType=VARCHAR}, 
+      #{bulkShowstatus,jdbcType=VARCHAR}, #{bulkWechatidstatus,jdbcType=VARCHAR}, #{bulkWechatcodepicture,jdbcType=VARCHAR}, 
+      #{bulkAddtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baodanwang.pojo.Bulks">
+    insert into bulks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bulkId != null">
+        bulk_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="bulkStatus != null">
+        bulk_status,
+      </if>
+      <if test="bulkTitle != null">
+        bulk_title,
+      </if>
+      <if test="bulkAnnouncement != null">
+        bulk_announcement,
+      </if>
+      <if test="bulkPicture != null">
+        bulk_picture,
+      </if>
+      <if test="bulkShowstatus != null">
+        bulk_showStatus,
+      </if>
+      <if test="bulkWechatidstatus != null">
+        bulk_weChatIdStatus,
+      </if>
+      <if test="bulkWechatcodepicture != null">
+        bulk_WeChatCodePicture,
+      </if>
+      <if test="bulkAddtime != null">
+        bulk_addTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bulkId != null">
+        #{bulkId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkStatus != null">
+        #{bulkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkTitle != null">
+        #{bulkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAnnouncement != null">
+        #{bulkAnnouncement,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkPicture != null">
+        #{bulkPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkShowstatus != null">
+        #{bulkShowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatidstatus != null">
+        #{bulkWechatidstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatcodepicture != null">
+        #{bulkWechatcodepicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAddtime != null">
+        #{bulkAddtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baodanwang.pojo.BulksExample" resultType="java.lang.Integer">
+    select count(*) from bulks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bulks
+    <set>
+      <if test="record.bulkId != null">
+        bulk_id = #{record.bulkId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeId != null">
+        store_id = #{record.storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkStatus != null">
+        bulk_status = #{record.bulkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkTitle != null">
+        bulk_title = #{record.bulkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkAnnouncement != null">
+        bulk_announcement = #{record.bulkAnnouncement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkPicture != null">
+        bulk_picture = #{record.bulkPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkShowstatus != null">
+        bulk_showStatus = #{record.bulkShowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkWechatidstatus != null">
+        bulk_weChatIdStatus = #{record.bulkWechatidstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkWechatcodepicture != null">
+        bulk_WeChatCodePicture = #{record.bulkWechatcodepicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkAddtime != null">
+        bulk_addTime = #{record.bulkAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bulks
+    set bulk_id = #{record.bulkId,jdbcType=VARCHAR},
+      store_id = #{record.storeId,jdbcType=VARCHAR},
+      bulk_status = #{record.bulkStatus,jdbcType=VARCHAR},
+      bulk_title = #{record.bulkTitle,jdbcType=VARCHAR},
+      bulk_announcement = #{record.bulkAnnouncement,jdbcType=VARCHAR},
+      bulk_picture = #{record.bulkPicture,jdbcType=VARCHAR},
+      bulk_showStatus = #{record.bulkShowstatus,jdbcType=VARCHAR},
+      bulk_weChatIdStatus = #{record.bulkWechatidstatus,jdbcType=VARCHAR},
+      bulk_WeChatCodePicture = #{record.bulkWechatcodepicture,jdbcType=VARCHAR},
+      bulk_addTime = #{record.bulkAddtime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baodanwang.pojo.Bulks">
+    update bulks
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkStatus != null">
+        bulk_status = #{bulkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkTitle != null">
+        bulk_title = #{bulkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAnnouncement != null">
+        bulk_announcement = #{bulkAnnouncement,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkPicture != null">
+        bulk_picture = #{bulkPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkShowstatus != null">
+        bulk_showStatus = #{bulkShowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatidstatus != null">
+        bulk_weChatIdStatus = #{bulkWechatidstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatcodepicture != null">
+        bulk_WeChatCodePicture = #{bulkWechatcodepicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAddtime != null">
+        bulk_addTime = #{bulkAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baodanwang.pojo.Bulks">
+    update bulks
+    set store_id = #{storeId,jdbcType=VARCHAR},
+      bulk_status = #{bulkStatus,jdbcType=VARCHAR},
+      bulk_title = #{bulkTitle,jdbcType=VARCHAR},
+      bulk_announcement = #{bulkAnnouncement,jdbcType=VARCHAR},
+      bulk_picture = #{bulkPicture,jdbcType=VARCHAR},
+      bulk_showStatus = #{bulkShowstatus,jdbcType=VARCHAR},
+      bulk_weChatIdStatus = #{bulkWechatidstatus,jdbcType=VARCHAR},
+      bulk_WeChatCodePicture = #{bulkWechatcodepicture,jdbcType=VARCHAR},
+      bulk_addTime = #{bulkAddtime,jdbcType=VARCHAR}
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.baodanwang.pojo.Bulks">
+    <id column="bulk_id" jdbcType="VARCHAR" property="bulkId" />
+    <result column="store_id" jdbcType="VARCHAR" property="storeId" />
+    <result column="bulk_status" jdbcType="VARCHAR" property="bulkStatus" />
+    <result column="bulk_title" jdbcType="VARCHAR" property="bulkTitle" />
+    <result column="bulk_announcement" jdbcType="VARCHAR" property="bulkAnnouncement" />
+    <result column="bulk_picture" jdbcType="VARCHAR" property="bulkPicture" />
+    <result column="bulk_showStatus" jdbcType="VARCHAR" property="bulkShowstatus" />
+    <result column="bulk_weChatIdStatus" jdbcType="VARCHAR" property="bulkWechatidstatus" />
+    <result column="bulk_WeChatCodePicture" jdbcType="VARCHAR" property="bulkWechatcodepicture" />
+    <result column="bulk_addTime" jdbcType="VARCHAR" property="bulkAddtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    bulk_id, store_id, bulk_status, bulk_title, bulk_announcement, bulk_picture, bulk_showStatus, 
+    bulk_weChatIdStatus, bulk_WeChatCodePicture, bulk_addTime
+  </sql>
+  <select id="selectByExample" parameterType="com.baodanwang.pojo.BulksExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bulks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bulks
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bulks
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baodanwang.pojo.BulksExample">
+    delete from bulks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baodanwang.pojo.Bulks">
+    insert into bulks (bulk_id, store_id, bulk_status, 
+      bulk_title, bulk_announcement, bulk_picture, 
+      bulk_showStatus, bulk_weChatIdStatus, bulk_WeChatCodePicture, 
+      bulk_addTime)
+    values (#{bulkId,jdbcType=VARCHAR}, #{storeId,jdbcType=VARCHAR}, #{bulkStatus,jdbcType=VARCHAR}, 
+      #{bulkTitle,jdbcType=VARCHAR}, #{bulkAnnouncement,jdbcType=VARCHAR}, #{bulkPicture,jdbcType=VARCHAR}, 
+      #{bulkShowstatus,jdbcType=VARCHAR}, #{bulkWechatidstatus,jdbcType=VARCHAR}, #{bulkWechatcodepicture,jdbcType=VARCHAR}, 
+      #{bulkAddtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baodanwang.pojo.Bulks">
+    insert into bulks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bulkId != null">
+        bulk_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="bulkStatus != null">
+        bulk_status,
+      </if>
+      <if test="bulkTitle != null">
+        bulk_title,
+      </if>
+      <if test="bulkAnnouncement != null">
+        bulk_announcement,
+      </if>
+      <if test="bulkPicture != null">
+        bulk_picture,
+      </if>
+      <if test="bulkShowstatus != null">
+        bulk_showStatus,
+      </if>
+      <if test="bulkWechatidstatus != null">
+        bulk_weChatIdStatus,
+      </if>
+      <if test="bulkWechatcodepicture != null">
+        bulk_WeChatCodePicture,
+      </if>
+      <if test="bulkAddtime != null">
+        bulk_addTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bulkId != null">
+        #{bulkId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkStatus != null">
+        #{bulkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkTitle != null">
+        #{bulkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAnnouncement != null">
+        #{bulkAnnouncement,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkPicture != null">
+        #{bulkPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkShowstatus != null">
+        #{bulkShowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatidstatus != null">
+        #{bulkWechatidstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatcodepicture != null">
+        #{bulkWechatcodepicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAddtime != null">
+        #{bulkAddtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baodanwang.pojo.BulksExample" resultType="java.lang.Integer">
+    select count(*) from bulks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bulks
+    <set>
+      <if test="record.bulkId != null">
+        bulk_id = #{record.bulkId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeId != null">
+        store_id = #{record.storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkStatus != null">
+        bulk_status = #{record.bulkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkTitle != null">
+        bulk_title = #{record.bulkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkAnnouncement != null">
+        bulk_announcement = #{record.bulkAnnouncement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkPicture != null">
+        bulk_picture = #{record.bulkPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkShowstatus != null">
+        bulk_showStatus = #{record.bulkShowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkWechatidstatus != null">
+        bulk_weChatIdStatus = #{record.bulkWechatidstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkWechatcodepicture != null">
+        bulk_WeChatCodePicture = #{record.bulkWechatcodepicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulkAddtime != null">
+        bulk_addTime = #{record.bulkAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bulks
+    set bulk_id = #{record.bulkId,jdbcType=VARCHAR},
+      store_id = #{record.storeId,jdbcType=VARCHAR},
+      bulk_status = #{record.bulkStatus,jdbcType=VARCHAR},
+      bulk_title = #{record.bulkTitle,jdbcType=VARCHAR},
+      bulk_announcement = #{record.bulkAnnouncement,jdbcType=VARCHAR},
+      bulk_picture = #{record.bulkPicture,jdbcType=VARCHAR},
+      bulk_showStatus = #{record.bulkShowstatus,jdbcType=VARCHAR},
+      bulk_weChatIdStatus = #{record.bulkWechatidstatus,jdbcType=VARCHAR},
+      bulk_WeChatCodePicture = #{record.bulkWechatcodepicture,jdbcType=VARCHAR},
+      bulk_addTime = #{record.bulkAddtime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baodanwang.pojo.Bulks">
+    update bulks
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkStatus != null">
+        bulk_status = #{bulkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkTitle != null">
+        bulk_title = #{bulkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAnnouncement != null">
+        bulk_announcement = #{bulkAnnouncement,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkPicture != null">
+        bulk_picture = #{bulkPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkShowstatus != null">
+        bulk_showStatus = #{bulkShowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatidstatus != null">
+        bulk_weChatIdStatus = #{bulkWechatidstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkWechatcodepicture != null">
+        bulk_WeChatCodePicture = #{bulkWechatcodepicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bulkAddtime != null">
+        bulk_addTime = #{bulkAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baodanwang.pojo.Bulks">
+    update bulks
+    set store_id = #{storeId,jdbcType=VARCHAR},
+      bulk_status = #{bulkStatus,jdbcType=VARCHAR},
+      bulk_title = #{bulkTitle,jdbcType=VARCHAR},
+      bulk_announcement = #{bulkAnnouncement,jdbcType=VARCHAR},
+      bulk_picture = #{bulkPicture,jdbcType=VARCHAR},
+      bulk_showStatus = #{bulkShowstatus,jdbcType=VARCHAR},
+      bulk_weChatIdStatus = #{bulkWechatidstatus,jdbcType=VARCHAR},
+      bulk_WeChatCodePicture = #{bulkWechatcodepicture,jdbcType=VARCHAR},
+      bulk_addTime = #{bulkAddtime,jdbcType=VARCHAR}
+    where bulk_id = #{bulkId,jdbcType=VARCHAR}
+  </update>
+</mapper>

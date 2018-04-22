@@ -1,0 +1,87 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.UsersMapper;
+import com.baodanwang.pojo.Users;
+import com.baodanwang.pojo.UsersExample;
+import com.baodanwang.service.UsersService;
+@Service("usersService")
+public class UsersServiceImpl implements UsersService{
+	@Autowired
+	private UsersMapper usersMapper = null;
+	
+	@Override
+	public List<Users> getUserList(String sidx, String sord) throws Exception {
+		UsersExample example = new UsersExample();
+		example.setOrderByClause(sidx+" "+sord);
+		List<Users> users = usersMapper.selectByExample(example);
+		return users;
+	}
+
+	@Override
+	public void deleteUser(String userId) throws Exception {
+		usersMapper.deleteByPrimaryKey(userId);
+	}
+	@Override
+	public List<Users> searchUser(String searchField, String searchString, String sidx, String sord) throws Exception {
+		UsersExample example = new UsersExample();
+		UsersExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx+" "+sord);
+		switch (searchField) {
+		case "user_id":
+			criteria.andUserIdLike("%"+searchString+"%");
+			break;
+		case "user_openid":
+			criteria.andUserOpenidLike("%"+searchString+"%");
+			break;
+		case "user_nickName":
+			criteria.andUserNicknameLike("%"+searchString+"%");
+			break;
+		case "user_weChatId":
+			criteria.andUserWechatidLike("%"+searchString+"%");
+			break;
+		case "user_tel":
+			criteria.andUserTelLike("%"+searchString+"%");
+			break;
+		case "user_address":
+			criteria.andUserAddressLike("%"+searchString+"%");
+			break;
+		case "user_realName":
+			criteria.andUserRealnameLike("%"+searchString+"%");
+			break;
+		case "add_time":
+			criteria.andAddTimeLike("%"+searchString+"%");
+			break;
+		default:
+			break;
+		}
+		List<Users> users = usersMapper.selectByExample(example);
+		return users;
+	}
+
+	@Override
+	public Users getUser(String userName, String userOpenid) throws Exception {
+		UsersExample example = new UsersExample();
+		UsersExample.Criteria criteria = example.createCriteria();
+		criteria.andUserOpenidEqualTo(userOpenid);
+		List<Users> stores = usersMapper.selectByExample(example);
+		if (stores.size() > 0) {
+			return stores.get(0);
+		} else {
+			Users user = new Users();
+			UUID userId = UUID.randomUUID();
+			user.setUserId(String.valueOf(userId));
+			user.setUserOpenid(userOpenid);
+			user.setUserNickname(userName);
+			usersMapper.insert(user);
+			List<Users> stores1 = usersMapper.selectByExample(example);
+			return stores1.get(0);
+		}
+	}
+
+}

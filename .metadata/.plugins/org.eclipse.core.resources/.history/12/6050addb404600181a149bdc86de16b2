@@ -1,0 +1,229 @@
+package com.baodanwang.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.baodanwang.pojo.Bulks;
+import com.baodanwang.pojo.Goods;
+import com.baodanwang.pojo.Homeimage;
+import com.baodanwang.pojo.Orders;
+import com.baodanwang.pojo.Stores;
+import com.baodanwang.pojo.Users;
+import com.baodanwang.pojo.Videoandimages;
+import com.baodanwang.service.BulksService;
+import com.baodanwang.service.GoodsService;
+import com.baodanwang.service.HomeImageService;
+import com.baodanwang.service.OrdersService;
+import com.baodanwang.service.StoresService;
+import com.baodanwang.service.UsersService;
+import com.baodanwang.util.FileUpload;
+import com.baodanwang.util.OpenidBean;
+import com.baodanwang.util.WXUtil;
+
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+@Controller
+@RequestMapping(value = "/weChat")
+public class WeChatController {
+
+	@Autowired
+	private StoresService storesService;
+	@Autowired
+	private HomeImageService homeImageService;
+	@Autowired
+	private UsersService usersService;
+	@Autowired
+	private OrdersService ordersService;
+	@Autowired
+	private BulksService bulksService;
+	@Autowired
+	private GoodsService goodsService;
+
+	@ResponseBody
+	@RequestMapping(value = "/getOpenid", method = RequestMethod.POST)
+	public JSON getOpenid(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		String secret = req.getParameter("secret");
+		String appid = req.getParameter("appid");
+		String code = req.getParameter("code");
+		System.out.println(secret + " " + appid + " " + code);
+		OpenidBean openidBean = WXUtil.getOpenid(appid, secret, code);
+		return JSONObject.fromObject(openidBean);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getHomeImage", method = RequestMethod.POST)
+	public JSON getHomeImage(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		Homeimage homeimage = homeImageService.getHomeImage();
+		String image = homeimage.getHomeImage();
+		homeimage.setHomeImage("http://vbywpj.natappfree.cc/baodanwang" + image);
+		return JSONObject.fromObject(homeimage);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getStore", method = RequestMethod.POST)
+	public JSON getStore(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		String storeNickname = req.getParameter("storeNickname");
+		String storeOpenid = req.getParameter("storeOpenid");
+		String storeAvatarurl = req.getParameter("storeAvatarurl");
+		Stores stores = storesService.getStore(storeOpenid, storeNickname, storeAvatarurl);
+		JSONObject result = JSONObject.fromObject(stores);
+		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/updataStore", method = RequestMethod.POST)
+	public JSON updataStore(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		String storeId = req.getParameter("storeId");
+		String storeName = req.getParameter("storeName");
+		String storeTel = req.getParameter("storeTel");
+		String storeWechatid = req.getParameter("storeWechatid");
+		String storeAddress = req.getParameter("storeAddress");
+		String storeAddressdetail = req.getParameter("storeAddressdetail");
+		String storePickupsite = req.getParameter("storePickupsite");
+		Stores store = storesService.getStore(storeId);
+		System.out.println(store.toString());
+		if (storeName != null && storeName != "") {
+			store.setStoreName(storeName);
+		}
+		if (storeTel != null && storeTel != "") {
+			store.setStoreTel(storeTel);
+		}
+		if (storeWechatid != null && storeWechatid != "") {
+			store.setStoreWechatid(storeWechatid);
+		}
+		if (storeAddress != null && storeAddress != "") {
+			store.setStoreAddress(storeAddress);
+		}
+		if (storePickupsite != null && storePickupsite != "") {
+			store.setStorePickupsite(storePickupsite);
+		}
+		if (storeAddressdetail != null && storeAddressdetail != "") {
+			store.setStoreAddressdetail(storeAddressdetail);
+		}
+		int result = storesService.upDataStore(store);
+		JSONObject datas = new JSONObject();
+		if (result == 1) {
+			datas.accumulate("result", "修改成功");
+		} else {
+			datas.accumulate("result", "修改失败");
+		}
+		return datas;
+
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getUser", method = RequestMethod.POST)
+	public JSON getUser(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		String userName = req.getParameter("userName");
+		String userOpenid = req.getParameter("userOpenid");
+		String userAvatarurl = req.getParameter("userAvatarurl");
+		Users user = usersService.getUser(userName, userOpenid, userAvatarurl);
+		JSONObject result = JSONObject.fromObject(user);
+		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getOrder", method = RequestMethod.POST)
+	public JSON getOrder(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		String id = req.getParameter("id");
+		String type = req.getParameter("type");
+		List<Orders> order = ordersService.getOrder(id, type);
+		JSONObject orders = JSONObject.fromObject(order);
+		return orders;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/insertBulk", method = RequestMethod.POST)
+	public JSON insertBulk(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+		String storeId = req.getParameter("storeId");
+		String bulkTitle = req.getParameter("bulkTitle");
+		String bulkAnnouncement = req.getParameter("bulkAnnouncement");
+		String bulkWechatidstatus = req.getParameter("bulkWechatidstatus");
+		String bulkPickupway = req.getParameter("bulkPickupway");
+		String bulkShowstatus = req.getParameter("bulkShowstatus");
+		String goodsList = req.getParameter("goodsList");
+		// 生成团购ID
+		UUID bulkId = UUID.randomUUID();
+		// 生成团购创建时间
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String addTime = sdf.format(date);
+		// 转换商品列表字符串
+		JSONArray jsonArray = JSONArray.fromObject(goodsList);
+		for (int i = 0; i < jsonArray.size(); i++) {
+			UUID goodId = UUID.randomUUID();
+			JSONObject object = jsonArray.getJSONObject(i);
+			Goods good = new Goods();
+			good.setGoodAddtime(addTime);
+			good.setGoodAdvanceprice(object.getString("goodAdvanceprice"));
+			good.setGoodDescribe(object.getString("goodDescribe"));
+			good.setGoodId(String.valueOf(goodId));
+			good.setGoodName(object.getString("goodName"));
+			good.setGoodPrice(object.getString("goodPrice"));
+			good.setStoreId(storeId);
+			good.setGoodShowstatus("0");
+			goodsService.insertGood(good, String.valueOf(bulkId), object.getString("goodLimite"));
+		}
+		Bulks bulk = new Bulks();
+		bulk.setBulkId(String.valueOf(bulkId));
+		bulk.setStoreId(storeId);
+		bulk.setBulkAddtime(addTime);
+		bulk.setBulkTitle(bulkTitle);
+		bulk.setBulkAnnouncement(bulkAnnouncement);
+		bulk.setBulkWechatidstatus(bulkWechatidstatus);
+		bulk.setBulkPickupway(bulkPickupway);
+		bulk.setBulkStatus("0");
+		if (bulkShowstatus != null) {
+			bulk.setBulkShowstatus(bulkShowstatus);
+		} else {
+			bulk.setBulkShowstatus("0");
+		}
+		int result = bulksService.insertBulk(bulk);
+		JSONObject datas = new JSONObject();
+		if (result == 1) {
+			datas.accumulate("result", "团购创建成功");
+		} else {
+			datas.accumulate("result", "团购创建失败");
+		}
+		return datas;
+
+	}
+
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	public void uploadFile(HttpServletRequest req, HttpServletResponse rep, @RequestParam("file") MultipartFile file)
+			throws Exception {
+		String fileType = req.getParameter("fileType");
+		String type = req.getParameter("type");
+		String id = req.getParameter("id");
+		String filePath = req.getServletContext().getRealPath("upload");
+		Date date1 = new Date();
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+		String fileNameBefore = fmt.format(date1);
+		String fileName = fileNameBefore + file.getOriginalFilename();
+		FileUpload fileUpload = new FileUpload(file, fileName, filePath);
+		String fileUploadPath = fileUpload.fileUpload();
+		if (type.equals("good")) {
+			Videoandimages goodVideoandimages = new Videoandimages();
+			goodVideoandimages.setGoodId(id);
+			goodVideoandimages.setType(type);
+			goodVideoandimages.setVideoImages(fileUploadPath);
+			goodsService.insertGoodVideoAndImage(goodVideoandimages);
+		}
+	}
+}

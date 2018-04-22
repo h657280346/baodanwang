@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\myeclipse workplace\Weibo"/>
+			<item value="D:\我的文件\wemall_v2"/>
+			<item value="C:\Users\guiqi\Desktop\project"/>
+			<item value="H:\学习资料\ssm商城\02.第二天（框架整合，后台系统搭建）\01.参考资料\逆向工程\generatorSqlmapCustom"/>
+			<item value="D:\我的文件\浪曦\网络编程\QQ"/>
+			<item value="D:\我的文件\浪曦\网络编程\第二阶段项目总结（QQ）"/>
+			<item value="D:\我的文件\浪曦\网络编程\IM"/>
+			<item value="C:\Users\guiqi\Desktop\Test"/>
+			<item value="C:\Users\guiqi\Desktop\spring_test"/>
+			<item value="C:\Users\guiqi\Desktop\MyProject1"/>
+			<item value="C:\Users\guiqi\Desktop\Stumanage"/>
+			<item value="C:\Users\guiqi\[www.java1234.com]Java扫雷源码"/>
+			<item value="C:\Users\guiqi\Desktop\[www.java1234.com]Java扫雷源码"/>
+			<item value="C:\Users\guiqi\Desktop\QQ"/>
+			<item value="G:\IM"/>
+			<item value="F:\IM"/>
+			<item value="D:\我的文件\浪曦\QQ"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1461761761488" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.m2e.core.wizards.Maven2ModuleWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+</section>

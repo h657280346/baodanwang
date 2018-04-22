@@ -1,0 +1,13 @@
+package aaa;
+
+import java.util.Random;
+
+public class aaa {
+
+	public static void main(String[] args) {
+		Random ran = new Random();
+	for(int i=1;i<=10;i++){
+		int n = ran.nextInt(100);
+	}
+		}
+}

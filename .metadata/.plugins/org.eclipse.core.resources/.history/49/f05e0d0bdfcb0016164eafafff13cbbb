@@ -1,0 +1,14 @@
+package aaa;
+public class aaa {
+
+	public static void main(String[] args) {
+		int i,k;
+		int a[]={11,21,31,41,51,61,71,81,91};
+		for(i=0;i<a.length;i++){
+			for(k=2;k<=a[i]/2;k++)
+				if(a[i]%k==0)
+					break;
+			if(k>a[i]/2)System.out.println(a[i]+" ");
+		}
+	}
+}

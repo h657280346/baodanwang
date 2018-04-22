@@ -1,0 +1,28 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.VideoandimagesMapper;
+import com.baodanwang.pojo.Videoandimages;
+import com.baodanwang.pojo.VideoandimagesExample;
+import com.baodanwang.service.VideoAndImageService;
+
+@Service("videoAndImageService")
+public class VideoAndImageServiceImpl implements VideoAndImageService {
+
+	@Autowired
+	private VideoandimagesMapper videoandimagesMapper = null;
+
+	@Override
+	public List<Videoandimages> getVideoandimagesList(String goodId) throws Exception {
+		VideoandimagesExample example = new VideoandimagesExample();
+		VideoandimagesExample.Criteria criteria = example.createCriteria();
+		criteria.andGoodIdEqualTo(goodId);
+		List<Videoandimages> result = videoandimagesMapper.selectByExample(example);
+		return result;
+	}
+
+}

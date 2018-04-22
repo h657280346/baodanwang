@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>逸尘智创后台管理系统-首页背景图</title>
+</head>
+<body>
+	<!-- Bread crumb is created dynamically -->
+	<!-- row -->
+	<div class="row">
+		<!-- col -->
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<!-- PAGE HEADER -->
+				<i class="fa-fw fa fa-file-image-o"></i> 首页背景图
+			</h1>
+		</div>
+		<!-- end col -->
+	</div>
+	<!-- end row -->
+	<div
+		style="display: flex; flex-direction: column; align-items: center;">
+		<img id="homeImage" style="width: 400px; height: auto;" src="">
+		<button style="margin-top: 40px; width: 100px;" class="btn btn-primary">修改</button>
+		<form id="homeImageOnloadForm" class="import-file-form"
+			enctype="multipart/form-data">
+			<input type="file" name="homeImage" id="homeImageOnload"
+				style="display: none" onchange="fileUpload()" />
+		</form>
+	</div>
+</body>
+<script src="js/jquery.form.js"></script>
+<script>
+	$.ajax({
+		type : "POST",
+		url : "getHomeImage.action",
+		success : function(data) {
+			$("#homeImage").attr("src", data.homeImage);
+		}
+	});
+	$("button").click(function() {
+		//$(homeImageOnload").trigger("click");
+	});
+	/*fution fileUpload() {
+		var option = {
+			url : "uploadHomeImage.action", 
+			type : "POST",
+			datatype : 'json', 
+			clearForm : true,  
+			success : function(map) {
+				alert("上传" + map.message + "!");
+			},
+			error : function(data) {
+				alert("页面请求失败！");
+			}
+		};
+		$("#homeImageOnloadForm").ajaxSubmit(option);
+		return false; 
+	}*/
+</script>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yczc.ssm.mapper.CarouselMapper">
+	<insert id="addCarousel" parameterType="carousel" >
+		insert into carousel values(#{id},#{title},#{priority},#{img},#{videourl},#{introduce})
+	</insert>
+	
+	<delete id="deleteCarousel" parameterType="string">
+		delete from carousel where id = #{value}
+	</delete>
+	
+	<update id="updateCarousel" parameterType="carousel">
+		update carousel set priority=#{priority},img=#{img},introduce=#{introduce},videourl=#{videourl},title=#{title} where id=#{id}
+	</update>
+		
+	
+	<select id="getCarousel"  resultType="carousel" parameterType="int">
+		select * from carousel order by priority desc LIMIT 0,#{value}
+	</select>
+	<select id="findAllCarousel"  resultType="carousel">
+		select * from carousel order by priority desc
+	</select>
+	<select id="findCarouselById" parameterType="string" resultType="carousel">
+		select * from carousel where id = #{value} 
+	</select>	
+	
+	
+	<select id="count" resultType="int">
+		select count(*) from carousel
+	</select>
+</mapper>

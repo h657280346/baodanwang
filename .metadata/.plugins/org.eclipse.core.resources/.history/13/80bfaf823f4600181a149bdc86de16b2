@@ -1,0 +1,16 @@
+package com.baodanwang.service;
+
+import java.util.List;
+
+import com.baodanwang.pojo.Goods;
+
+public interface GoodsService {
+
+	public List<Goods> getGoodList(String sidx, String sord) throws Exception;
+
+	public void deleteGood(String goodId) throws Exception;
+
+	public List<Goods> searchGood(String searchField, String searchString, String sidx, String sord) throws Exception;
+
+	public void insertGood(Goods good, String bulkId, String goodLimite) throws Exception;
+}

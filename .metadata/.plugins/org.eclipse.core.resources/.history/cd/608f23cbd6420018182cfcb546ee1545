@@ -1,0 +1,93 @@
+package com.baodanwang.pojo;
+
+public class Bulks {
+    private String bulkId;
+
+    private String storeId;
+
+    private String bulkStatus;
+
+    private String bulkTitle;
+
+    private String bulkAnnouncement;
+
+    private String bulkPicture;
+
+    private String bulkShowstatus;
+
+    private String bulkWechatidstatus;
+
+    private String bulkWechatcodepicture;
+
+    public String getBulkId() {
+        return bulkId;
+    }
+
+    public void setBulkId(String bulkId) {
+        this.bulkId = bulkId == null ? null : bulkId.trim();
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId == null ? null : storeId.trim();
+    }
+
+    public String getBulkStatus() {
+        return bulkStatus;
+    }
+
+    public void setBulkStatus(String bulkStatus) {
+        this.bulkStatus = bulkStatus == null ? null : bulkStatus.trim();
+    }
+
+    public String getBulkTitle() {
+        return bulkTitle;
+    }
+
+    public void setBulkTitle(String bulkTitle) {
+        this.bulkTitle = bulkTitle == null ? null : bulkTitle.trim();
+    }
+
+    public String getBulkAnnouncement() {
+        return bulkAnnouncement;
+    }
+
+    public void setBulkAnnouncement(String bulkAnnouncement) {
+        this.bulkAnnouncement = bulkAnnouncement == null ? null : bulkAnnouncement.trim();
+    }
+
+    public String getBulkPicture() {
+        return bulkPicture;
+    }
+
+    public void setBulkPicture(String bulkPicture) {
+        this.bulkPicture = bulkPicture == null ? null : bulkPicture.trim();
+    }
+
+    public String getBulkShowstatus() {
+        return bulkShowstatus;
+    }
+
+    public void setBulkShowstatus(String bulkShowstatus) {
+        this.bulkShowstatus = bulkShowstatus == null ? null : bulkShowstatus.trim();
+    }
+
+    public String getBulkWechatidstatus() {
+        return bulkWechatidstatus;
+    }
+
+    public void setBulkWechatidstatus(String bulkWechatidstatus) {
+        this.bulkWechatidstatus = bulkWechatidstatus == null ? null : bulkWechatidstatus.trim();
+    }
+
+    public String getBulkWechatcodepicture() {
+        return bulkWechatcodepicture;
+    }
+
+    public void setBulkWechatcodepicture(String bulkWechatcodepicture) {
+        this.bulkWechatcodepicture = bulkWechatcodepicture == null ? null : bulkWechatcodepicture.trim();
+    }
+}

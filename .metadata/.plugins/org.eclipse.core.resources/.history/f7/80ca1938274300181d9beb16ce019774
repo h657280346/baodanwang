@@ -1,0 +1,68 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.baodanwang.mapper.BulksMapper;
+import com.baodanwang.pojo.Bulks;
+import com.baodanwang.pojo.BulksExample;
+import com.baodanwang.service.BulksService;
+
+public class BulksServiceImpl implements BulksService {
+
+	@Autowired
+	private BulksMapper bulksMapper;
+	
+	@Override
+	public List<Bulks> getBulkList(String sidx, String sord) throws Exception {
+		BulksExample example = new BulksExample();
+		example.setOrderByClause(sidx+" "+sord);
+		List<Bulks> bulks = bulksMapper.selectByExample(example);
+		return bulks;
+	}
+
+	@Override
+	public void deleteBulk(String bulkId) throws Exception {
+		bulksMapper.deleteByPrimaryKey(bulkId);
+
+	}
+
+	@Override
+	public List<Bulks> searchBulk(String searchField, String searchString, String sidx, String sord) throws Exception {
+		BulksExample example = new BulksExample();
+		BulksExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx+" "+sord);
+		switch (searchField) {
+		case "bulk_id":
+			criteria.andBulkIdLike("%"+searchString+"%");
+			break;
+		case "store_id":
+			criteria.andStoreIdLike("%"+searchString+"%");
+			break;
+		case "good_name":
+			criteria.andGoodNameLike("%"+searchString+"%");
+			break;
+		case "good_showStatus":
+			criteria.andGoodShowstatusLike("%"+searchString+"%");
+			break;
+		case "good_price":
+			criteria.andGoodPriceEqualTo("%"+searchString+"%");
+			break;
+		case "good_advancePrice":
+			criteria.andGoodAdvancepriceEqualTo("%"+searchString+"%");
+			break;
+		case "good_describe":
+			criteria.andGoodDescribeLike("%"+searchString+"%");
+			break;
+		case "good_addTime":
+			criteria.andGoodAddtimeLike("%"+searchString+"%");
+			break;
+		default:
+			break;
+		}
+		List<Bulks> bulks = bulksMapper.selectByExample(example);
+		return bulks;
+	}
+
+}

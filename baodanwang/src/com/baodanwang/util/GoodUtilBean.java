@@ -1,0 +1,115 @@
+package com.baodanwang.util;
+
+public class GoodUtilBean {
+	private String goodId;
+
+	private String storeId;
+
+	private String goodName;
+
+	private String goodShowstatus;
+
+	private String goodPrice;
+
+	private String goodAdvanceprice;
+
+	private String goodDescribe;
+
+	private String goodAddtime;
+
+	private String image;
+	
+	private String video;
+
+	public GoodUtilBean(String goodId, String storeId, String goodName, String goodShowstatus, String goodPrice,
+			String goodAdvanceprice, String goodDescribe, String goodAddtime) {
+		this.goodId = goodId;
+		this.storeId = storeId;
+		this.goodName = goodName;
+		this.goodShowstatus = goodShowstatus;
+		this.goodPrice = goodPrice;
+		this.goodAdvanceprice = goodAdvanceprice;
+		this.goodDescribe = goodDescribe;
+		this.goodAddtime = goodAddtime;
+	}
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video == null ? null : video.trim();
+	}
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image == null ? null : image.trim();
+	}
+
+	public String getGoodId() {
+		return goodId;
+	}
+
+	public void setGoodId(String goodId) {
+		this.goodId = goodId == null ? null : goodId.trim();
+	}
+
+	public String getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(String storeId) {
+		this.storeId = storeId == null ? null : storeId.trim();
+	}
+
+	public String getGoodName() {
+		return goodName;
+	}
+
+	public void setGoodName(String goodName) {
+		this.goodName = goodName == null ? null : goodName.trim();
+	}
+
+	public String getGoodShowstatus() {
+		return goodShowstatus;
+	}
+
+	public void setGoodShowstatus(String goodShowstatus) {
+		this.goodShowstatus = goodShowstatus == null ? null : goodShowstatus.trim();
+	}
+
+	public String getGoodPrice() {
+		return goodPrice;
+	}
+
+	public void setGoodPrice(String goodPrice) {
+		this.goodPrice = goodPrice == null ? null : goodPrice.trim();
+	}
+
+	public String getGoodAdvanceprice() {
+		return goodAdvanceprice;
+	}
+
+	public void setGoodAdvanceprice(String goodAdvanceprice) {
+		this.goodAdvanceprice = goodAdvanceprice == null ? null : goodAdvanceprice.trim();
+	}
+
+	public String getGoodDescribe() {
+		return goodDescribe;
+	}
+
+	public void setGoodDescribe(String goodDescribe) {
+		this.goodDescribe = goodDescribe == null ? null : goodDescribe.trim();
+	}
+
+	public String getGoodAddtime() {
+		return goodAddtime;
+	}
+
+	public void setGoodAddtime(String goodAddtime) {
+		this.goodAddtime = goodAddtime == null ? null : goodAddtime.trim();
+	}
+}

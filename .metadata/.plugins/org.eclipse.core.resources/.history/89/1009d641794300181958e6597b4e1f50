@@ -1,0 +1,900 @@
+package com.baodanwang.pojo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BulksExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    public BulksExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        public Criteria andBulkIdIsNull() {
+            addCriterion("bulk_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdIsNotNull() {
+            addCriterion("bulk_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdEqualTo(String value) {
+            addCriterion("bulk_id =", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdNotEqualTo(String value) {
+            addCriterion("bulk_id <>", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdGreaterThan(String value) {
+            addCriterion("bulk_id >", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_id >=", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdLessThan(String value) {
+            addCriterion("bulk_id <", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdLessThanOrEqualTo(String value) {
+            addCriterion("bulk_id <=", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdLike(String value) {
+            addCriterion("bulk_id like", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdNotLike(String value) {
+            addCriterion("bulk_id not like", value, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdIn(List<String> values) {
+            addCriterion("bulk_id in", values, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdNotIn(List<String> values) {
+            addCriterion("bulk_id not in", values, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdBetween(String value1, String value2) {
+            addCriterion("bulk_id between", value1, value2, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkIdNotBetween(String value1, String value2) {
+            addCriterion("bulk_id not between", value1, value2, "bulkId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdIsNull() {
+            addCriterion("store_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdIsNotNull() {
+            addCriterion("store_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdEqualTo(String value) {
+            addCriterion("store_id =", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdNotEqualTo(String value) {
+            addCriterion("store_id <>", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdGreaterThan(String value) {
+            addCriterion("store_id >", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdGreaterThanOrEqualTo(String value) {
+            addCriterion("store_id >=", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdLessThan(String value) {
+            addCriterion("store_id <", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdLessThanOrEqualTo(String value) {
+            addCriterion("store_id <=", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdLike(String value) {
+            addCriterion("store_id like", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdNotLike(String value) {
+            addCriterion("store_id not like", value, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdIn(List<String> values) {
+            addCriterion("store_id in", values, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdNotIn(List<String> values) {
+            addCriterion("store_id not in", values, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdBetween(String value1, String value2) {
+            addCriterion("store_id between", value1, value2, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreIdNotBetween(String value1, String value2) {
+            addCriterion("store_id not between", value1, value2, "storeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusIsNull() {
+            addCriterion("bulk_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusIsNotNull() {
+            addCriterion("bulk_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusEqualTo(String value) {
+            addCriterion("bulk_status =", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusNotEqualTo(String value) {
+            addCriterion("bulk_status <>", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusGreaterThan(String value) {
+            addCriterion("bulk_status >", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_status >=", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusLessThan(String value) {
+            addCriterion("bulk_status <", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusLessThanOrEqualTo(String value) {
+            addCriterion("bulk_status <=", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusLike(String value) {
+            addCriterion("bulk_status like", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusNotLike(String value) {
+            addCriterion("bulk_status not like", value, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusIn(List<String> values) {
+            addCriterion("bulk_status in", values, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusNotIn(List<String> values) {
+            addCriterion("bulk_status not in", values, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusBetween(String value1, String value2) {
+            addCriterion("bulk_status between", value1, value2, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkStatusNotBetween(String value1, String value2) {
+            addCriterion("bulk_status not between", value1, value2, "bulkStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleIsNull() {
+            addCriterion("bulk_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleIsNotNull() {
+            addCriterion("bulk_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleEqualTo(String value) {
+            addCriterion("bulk_title =", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleNotEqualTo(String value) {
+            addCriterion("bulk_title <>", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleGreaterThan(String value) {
+            addCriterion("bulk_title >", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_title >=", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleLessThan(String value) {
+            addCriterion("bulk_title <", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleLessThanOrEqualTo(String value) {
+            addCriterion("bulk_title <=", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleLike(String value) {
+            addCriterion("bulk_title like", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleNotLike(String value) {
+            addCriterion("bulk_title not like", value, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleIn(List<String> values) {
+            addCriterion("bulk_title in", values, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleNotIn(List<String> values) {
+            addCriterion("bulk_title not in", values, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleBetween(String value1, String value2) {
+            addCriterion("bulk_title between", value1, value2, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkTitleNotBetween(String value1, String value2) {
+            addCriterion("bulk_title not between", value1, value2, "bulkTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementIsNull() {
+            addCriterion("bulk_announcement is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementIsNotNull() {
+            addCriterion("bulk_announcement is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementEqualTo(String value) {
+            addCriterion("bulk_announcement =", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementNotEqualTo(String value) {
+            addCriterion("bulk_announcement <>", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementGreaterThan(String value) {
+            addCriterion("bulk_announcement >", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_announcement >=", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementLessThan(String value) {
+            addCriterion("bulk_announcement <", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementLessThanOrEqualTo(String value) {
+            addCriterion("bulk_announcement <=", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementLike(String value) {
+            addCriterion("bulk_announcement like", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementNotLike(String value) {
+            addCriterion("bulk_announcement not like", value, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementIn(List<String> values) {
+            addCriterion("bulk_announcement in", values, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementNotIn(List<String> values) {
+            addCriterion("bulk_announcement not in", values, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementBetween(String value1, String value2) {
+            addCriterion("bulk_announcement between", value1, value2, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAnnouncementNotBetween(String value1, String value2) {
+            addCriterion("bulk_announcement not between", value1, value2, "bulkAnnouncement");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureIsNull() {
+            addCriterion("bulk_picture is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureIsNotNull() {
+            addCriterion("bulk_picture is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureEqualTo(String value) {
+            addCriterion("bulk_picture =", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureNotEqualTo(String value) {
+            addCriterion("bulk_picture <>", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureGreaterThan(String value) {
+            addCriterion("bulk_picture >", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_picture >=", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureLessThan(String value) {
+            addCriterion("bulk_picture <", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureLessThanOrEqualTo(String value) {
+            addCriterion("bulk_picture <=", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureLike(String value) {
+            addCriterion("bulk_picture like", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureNotLike(String value) {
+            addCriterion("bulk_picture not like", value, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureIn(List<String> values) {
+            addCriterion("bulk_picture in", values, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureNotIn(List<String> values) {
+            addCriterion("bulk_picture not in", values, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureBetween(String value1, String value2) {
+            addCriterion("bulk_picture between", value1, value2, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkPictureNotBetween(String value1, String value2) {
+            addCriterion("bulk_picture not between", value1, value2, "bulkPicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusIsNull() {
+            addCriterion("bulk_showStatus is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusIsNotNull() {
+            addCriterion("bulk_showStatus is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusEqualTo(String value) {
+            addCriterion("bulk_showStatus =", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusNotEqualTo(String value) {
+            addCriterion("bulk_showStatus <>", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusGreaterThan(String value) {
+            addCriterion("bulk_showStatus >", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_showStatus >=", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusLessThan(String value) {
+            addCriterion("bulk_showStatus <", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusLessThanOrEqualTo(String value) {
+            addCriterion("bulk_showStatus <=", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusLike(String value) {
+            addCriterion("bulk_showStatus like", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusNotLike(String value) {
+            addCriterion("bulk_showStatus not like", value, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusIn(List<String> values) {
+            addCriterion("bulk_showStatus in", values, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusNotIn(List<String> values) {
+            addCriterion("bulk_showStatus not in", values, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusBetween(String value1, String value2) {
+            addCriterion("bulk_showStatus between", value1, value2, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkShowstatusNotBetween(String value1, String value2) {
+            addCriterion("bulk_showStatus not between", value1, value2, "bulkShowstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusIsNull() {
+            addCriterion("bulk_weChatIdStatus is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusIsNotNull() {
+            addCriterion("bulk_weChatIdStatus is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusEqualTo(String value) {
+            addCriterion("bulk_weChatIdStatus =", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusNotEqualTo(String value) {
+            addCriterion("bulk_weChatIdStatus <>", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusGreaterThan(String value) {
+            addCriterion("bulk_weChatIdStatus >", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_weChatIdStatus >=", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusLessThan(String value) {
+            addCriterion("bulk_weChatIdStatus <", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusLessThanOrEqualTo(String value) {
+            addCriterion("bulk_weChatIdStatus <=", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusLike(String value) {
+            addCriterion("bulk_weChatIdStatus like", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusNotLike(String value) {
+            addCriterion("bulk_weChatIdStatus not like", value, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusIn(List<String> values) {
+            addCriterion("bulk_weChatIdStatus in", values, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusNotIn(List<String> values) {
+            addCriterion("bulk_weChatIdStatus not in", values, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusBetween(String value1, String value2) {
+            addCriterion("bulk_weChatIdStatus between", value1, value2, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatidstatusNotBetween(String value1, String value2) {
+            addCriterion("bulk_weChatIdStatus not between", value1, value2, "bulkWechatidstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureIsNull() {
+            addCriterion("bulk_WeChatCodePicture is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureIsNotNull() {
+            addCriterion("bulk_WeChatCodePicture is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureEqualTo(String value) {
+            addCriterion("bulk_WeChatCodePicture =", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureNotEqualTo(String value) {
+            addCriterion("bulk_WeChatCodePicture <>", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureGreaterThan(String value) {
+            addCriterion("bulk_WeChatCodePicture >", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_WeChatCodePicture >=", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureLessThan(String value) {
+            addCriterion("bulk_WeChatCodePicture <", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureLessThanOrEqualTo(String value) {
+            addCriterion("bulk_WeChatCodePicture <=", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureLike(String value) {
+            addCriterion("bulk_WeChatCodePicture like", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureNotLike(String value) {
+            addCriterion("bulk_WeChatCodePicture not like", value, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureIn(List<String> values) {
+            addCriterion("bulk_WeChatCodePicture in", values, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureNotIn(List<String> values) {
+            addCriterion("bulk_WeChatCodePicture not in", values, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureBetween(String value1, String value2) {
+            addCriterion("bulk_WeChatCodePicture between", value1, value2, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkWechatcodepictureNotBetween(String value1, String value2) {
+            addCriterion("bulk_WeChatCodePicture not between", value1, value2, "bulkWechatcodepicture");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeIsNull() {
+            addCriterion("bulk_addTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeIsNotNull() {
+            addCriterion("bulk_addTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeEqualTo(String value) {
+            addCriterion("bulk_addTime =", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeNotEqualTo(String value) {
+            addCriterion("bulk_addTime <>", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeGreaterThan(String value) {
+            addCriterion("bulk_addTime >", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeGreaterThanOrEqualTo(String value) {
+            addCriterion("bulk_addTime >=", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeLessThan(String value) {
+            addCriterion("bulk_addTime <", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeLessThanOrEqualTo(String value) {
+            addCriterion("bulk_addTime <=", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeLike(String value) {
+            addCriterion("bulk_addTime like", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeNotLike(String value) {
+            addCriterion("bulk_addTime not like", value, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeIn(List<String> values) {
+            addCriterion("bulk_addTime in", values, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeNotIn(List<String> values) {
+            addCriterion("bulk_addTime not in", values, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeBetween(String value1, String value2) {
+            addCriterion("bulk_addTime between", value1, value2, "bulkAddtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBulkAddtimeNotBetween(String value1, String value2) {
+            addCriterion("bulk_addTime not between", value1, value2, "bulkAddtime");
+            return (Criteria) this;
+        }
+    }
+
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

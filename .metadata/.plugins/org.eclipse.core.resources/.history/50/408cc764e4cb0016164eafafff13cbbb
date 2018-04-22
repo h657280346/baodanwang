@@ -1,0 +1,18 @@
+package aaa;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class aaa {
+
+	public static void main(String[] args) {
+		String s = "相信我一定能通过本次考试！" ;
+		File file = new File("test.txt");
+		try {
+			FileInputStream is = new FileInputStream(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baodanwang.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.baodanwang.pojo.Users">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_openid" jdbcType="VARCHAR" property="userOpenid" />
+    <result column="user_avatarUrl" jdbcType="VARCHAR" property="userAvatarurl" />
+    <result column="user_nickName" jdbcType="VARCHAR" property="userNickname" />
+    <result column="user_weChatId" jdbcType="VARCHAR" property="userWechatid" />
+    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="user_addTime" jdbcType="VARCHAR" property="userAddtime" />
+    <result column="user_realName" jdbcType="VARCHAR" property="userRealname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_id, user_openid, user_avatarUrl, user_nickName, user_weChatId, user_tel, user_address, 
+    user_addTime, user_realName
+  </sql>
+  <select id="selectByExample" parameterType="com.baodanwang.pojo.UsersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from users
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baodanwang.pojo.UsersExample">
+    delete from users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baodanwang.pojo.Users">
+    insert into users (user_id, user_openid, user_avatarUrl, 
+      user_nickName, user_weChatId, user_tel, 
+      user_address, user_addTime, user_realName
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userOpenid,jdbcType=VARCHAR}, #{userAvatarurl,jdbcType=VARCHAR}, 
+      #{userNickname,jdbcType=VARCHAR}, #{userWechatid,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, 
+      #{userAddress,jdbcType=VARCHAR}, #{userAddtime,jdbcType=VARCHAR}, #{userRealname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baodanwang.pojo.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userOpenid != null">
+        user_openid,
+      </if>
+      <if test="userAvatarurl != null">
+        user_avatarUrl,
+      </if>
+      <if test="userNickname != null">
+        user_nickName,
+      </if>
+      <if test="userWechatid != null">
+        user_weChatId,
+      </if>
+      <if test="userTel != null">
+        user_tel,
+      </if>
+      <if test="userAddress != null">
+        user_address,
+      </if>
+      <if test="userAddtime != null">
+        user_addTime,
+      </if>
+      <if test="userRealname != null">
+        user_realName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userOpenid != null">
+        #{userOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatarurl != null">
+        #{userAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null">
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userWechatid != null">
+        #{userWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddtime != null">
+        #{userAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealname != null">
+        #{userRealname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baodanwang.pojo.UsersExample" resultType="java.lang.Integer">
+    select count(*) from users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update users
+    <set>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userOpenid != null">
+        user_openid = #{record.userOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAvatarurl != null">
+        user_avatarUrl = #{record.userAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userNickname != null">
+        user_nickName = #{record.userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userWechatid != null">
+        user_weChatId = #{record.userWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userTel != null">
+        user_tel = #{record.userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAddress != null">
+        user_address = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAddtime != null">
+        user_addTime = #{record.userAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userRealname != null">
+        user_realName = #{record.userRealname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update users
+    set user_id = #{record.userId,jdbcType=VARCHAR},
+      user_openid = #{record.userOpenid,jdbcType=VARCHAR},
+      user_avatarUrl = #{record.userAvatarurl,jdbcType=VARCHAR},
+      user_nickName = #{record.userNickname,jdbcType=VARCHAR},
+      user_weChatId = #{record.userWechatid,jdbcType=VARCHAR},
+      user_tel = #{record.userTel,jdbcType=VARCHAR},
+      user_address = #{record.userAddress,jdbcType=VARCHAR},
+      user_addTime = #{record.userAddtime,jdbcType=VARCHAR},
+      user_realName = #{record.userRealname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baodanwang.pojo.Users">
+    update users
+    <set>
+      <if test="userOpenid != null">
+        user_openid = #{userOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatarurl != null">
+        user_avatarUrl = #{userAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null">
+        user_nickName = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userWechatid != null">
+        user_weChatId = #{userWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        user_tel = #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddtime != null">
+        user_addTime = #{userAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealname != null">
+        user_realName = #{userRealname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baodanwang.pojo.Users">
+    update users
+    set user_openid = #{userOpenid,jdbcType=VARCHAR},
+      user_avatarUrl = #{userAvatarurl,jdbcType=VARCHAR},
+      user_nickName = #{userNickname,jdbcType=VARCHAR},
+      user_weChatId = #{userWechatid,jdbcType=VARCHAR},
+      user_tel = #{userTel,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_addTime = #{userAddtime,jdbcType=VARCHAR},
+      user_realName = #{userRealname,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.baodanwang.pojo.Users">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_openid" jdbcType="VARCHAR" property="userOpenid" />
+    <result column="user_avatarUrl" jdbcType="VARCHAR" property="userAvatarurl" />
+    <result column="user_nickName" jdbcType="VARCHAR" property="userNickname" />
+    <result column="user_weChatId" jdbcType="VARCHAR" property="userWechatid" />
+    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="user_addTime" jdbcType="VARCHAR" property="userAddtime" />
+    <result column="user_realName" jdbcType="VARCHAR" property="userRealname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_id, user_openid, user_avatarUrl, user_nickName, user_weChatId, user_tel, user_address, 
+    user_addTime, user_realName
+  </sql>
+  <select id="selectByExample" parameterType="com.baodanwang.pojo.UsersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from users
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baodanwang.pojo.UsersExample">
+    delete from users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baodanwang.pojo.Users">
+    insert into users (user_id, user_openid, user_avatarUrl, 
+      user_nickName, user_weChatId, user_tel, 
+      user_address, user_addTime, user_realName
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userOpenid,jdbcType=VARCHAR}, #{userAvatarurl,jdbcType=VARCHAR}, 
+      #{userNickname,jdbcType=VARCHAR}, #{userWechatid,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, 
+      #{userAddress,jdbcType=VARCHAR}, #{userAddtime,jdbcType=VARCHAR}, #{userRealname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baodanwang.pojo.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userOpenid != null">
+        user_openid,
+      </if>
+      <if test="userAvatarurl != null">
+        user_avatarUrl,
+      </if>
+      <if test="userNickname != null">
+        user_nickName,
+      </if>
+      <if test="userWechatid != null">
+        user_weChatId,
+      </if>
+      <if test="userTel != null">
+        user_tel,
+      </if>
+      <if test="userAddress != null">
+        user_address,
+      </if>
+      <if test="userAddtime != null">
+        user_addTime,
+      </if>
+      <if test="userRealname != null">
+        user_realName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userOpenid != null">
+        #{userOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatarurl != null">
+        #{userAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null">
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userWechatid != null">
+        #{userWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddtime != null">
+        #{userAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealname != null">
+        #{userRealname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baodanwang.pojo.UsersExample" resultType="java.lang.Integer">
+    select count(*) from users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update users
+    <set>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userOpenid != null">
+        user_openid = #{record.userOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAvatarurl != null">
+        user_avatarUrl = #{record.userAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userNickname != null">
+        user_nickName = #{record.userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userWechatid != null">
+        user_weChatId = #{record.userWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userTel != null">
+        user_tel = #{record.userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAddress != null">
+        user_address = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAddtime != null">
+        user_addTime = #{record.userAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userRealname != null">
+        user_realName = #{record.userRealname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update users
+    set user_id = #{record.userId,jdbcType=VARCHAR},
+      user_openid = #{record.userOpenid,jdbcType=VARCHAR},
+      user_avatarUrl = #{record.userAvatarurl,jdbcType=VARCHAR},
+      user_nickName = #{record.userNickname,jdbcType=VARCHAR},
+      user_weChatId = #{record.userWechatid,jdbcType=VARCHAR},
+      user_tel = #{record.userTel,jdbcType=VARCHAR},
+      user_address = #{record.userAddress,jdbcType=VARCHAR},
+      user_addTime = #{record.userAddtime,jdbcType=VARCHAR},
+      user_realName = #{record.userRealname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baodanwang.pojo.Users">
+    update users
+    <set>
+      <if test="userOpenid != null">
+        user_openid = #{userOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatarurl != null">
+        user_avatarUrl = #{userAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null">
+        user_nickName = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userWechatid != null">
+        user_weChatId = #{userWechatid,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null">
+        user_tel = #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddtime != null">
+        user_addTime = #{userAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealname != null">
+        user_realName = #{userRealname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baodanwang.pojo.Users">
+    update users
+    set user_openid = #{userOpenid,jdbcType=VARCHAR},
+      user_avatarUrl = #{userAvatarurl,jdbcType=VARCHAR},
+      user_nickName = #{userNickname,jdbcType=VARCHAR},
+      user_weChatId = #{userWechatid,jdbcType=VARCHAR},
+      user_tel = #{userTel,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_addTime = #{userAddtime,jdbcType=VARCHAR},
+      user_realName = #{userRealname,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

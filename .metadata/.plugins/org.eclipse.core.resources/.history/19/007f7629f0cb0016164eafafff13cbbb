@@ -1,0 +1,69 @@
+package com.migong;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Restart extends JFrame {
+
+	private JPanel contentPane;//面板
+
+	/**
+	 * Create the frame.
+	 */
+	public Restart() {final JFrame jf = new JFrame("失败");
+	Font font = new Font("宋体",Font.BOLD,16);
+	jf.setBounds(100, 100, 300, 150);
+	jf.setFont(font);
+	jf.setLayout(null);
+	JLabel jl = new JLabel("时间到了");
+	jl.setFont(font);
+	jl.setBounds(20, 20, 80, 30);
+	JButton restart = new JButton("重新开始");
+	restart.setBounds(20, 60, 120, 30);
+	restart.setFont(font);
+	JButton exit = new JButton("退出");
+	exit.setBounds(150, 60, 80, 30);
+	exit.setFont(font);
+	jf.add(restart);
+	jf.add(exit);
+	jf.add(jl);
+	restart.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			jf.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//设置右上角关闭按钮关闭窗口功能
+			setBounds(100, 100, 450, 221);//设置窗口出现的位置横坐标，纵坐标，和窗口的宽，高
+			contentPane = new JPanel();//新建面板
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);//contentPane面板里绝对定位，用坐标绝对定位，没有布局
+			
+			JPanel panel = new JPanel();//新建面板
+			panel.setBounds(66, 35, 313, 84);//设置面板出现的位置在窗口内的横坐标，纵坐标，和面板的宽，高
+			contentPane.add(panel);//将面板panel添加到面板contentPane里
+			panel.setLayout(null);//panel面板里绝对定位
+			
+			JLabel lblNewLabel = new JLabel("五秒钟后从新开始......");//新建标签
+			lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 18));//设置标签字体
+			lblNewLabel.setBounds(65, 20, 205, 42);//设置标签在面板里出现的位置横坐标，纵坐标，和标签的宽，高
+			panel.add(lblNewLabel);//将标签添加到面板panel里
+		}
+	});
+	exit.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
+	});
+		
+	}
+
+}

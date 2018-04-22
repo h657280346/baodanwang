@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yczc.ssm.mapper.YuezhanMapper" >
+  <resultMap id="BaseResultMap" type="com.yczc.ssm.pojo.Yuezhan" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="matchid" property="matchid" jdbcType="VARCHAR" />
+    <result column="cancelnotes" property="cancelnotes" jdbcType="VARCHAR" />
+    <result column="sharenotes" property="sharenotes" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, openid, matchid, cancelnotes, sharenotes, identity, number
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yczc.ssm.pojo.YuezhanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yuezhan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from yuezhan
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from yuezhan
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yczc.ssm.pojo.YuezhanExample" >
+    delete from yuezhan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yczc.ssm.pojo.Yuezhan" >
+    insert into yuezhan (id, openid, matchid, 
+      cancelnotes, sharenotes, identity, 
+      number)
+    values (#{id,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{matchid,jdbcType=VARCHAR}, 
+      #{cancelnotes,jdbcType=VARCHAR}, #{sharenotes,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yczc.ssm.pojo.Yuezhan" >
+    insert into yuezhan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="matchid != null" >
+        matchid,
+      </if>
+      <if test="cancelnotes != null" >
+        cancelnotes,
+      </if>
+      <if test="sharenotes != null" >
+        sharenotes,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null" >
+        #{matchid,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelnotes != null" >
+        #{cancelnotes,jdbcType=VARCHAR},
+      </if>
+      <if test="sharenotes != null" >
+        #{sharenotes,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yczc.ssm.pojo.YuezhanExample" resultType="java.lang.Integer" >
+    select count(*) from yuezhan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update yuezhan
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openid != null" >
+        openid = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.matchid != null" >
+        matchid = #{record.matchid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cancelnotes != null" >
+        cancelnotes = #{record.cancelnotes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sharenotes != null" >
+        sharenotes = #{record.sharenotes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identity != null" >
+        identity = #{record.identity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update yuezhan
+    set id = #{record.id,jdbcType=VARCHAR},
+      openid = #{record.openid,jdbcType=VARCHAR},
+      matchid = #{record.matchid,jdbcType=VARCHAR},
+      cancelnotes = #{record.cancelnotes,jdbcType=VARCHAR},
+      sharenotes = #{record.sharenotes,jdbcType=VARCHAR},
+      identity = #{record.identity,jdbcType=VARCHAR},
+      number = #{record.number,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yczc.ssm.pojo.Yuezhan" >
+    update yuezhan
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null" >
+        matchid = #{matchid,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelnotes != null" >
+        cancelnotes = #{cancelnotes,jdbcType=VARCHAR},
+      </if>
+      <if test="sharenotes != null" >
+        sharenotes = #{sharenotes,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yczc.ssm.pojo.Yuezhan" >
+    update yuezhan
+    set openid = #{openid,jdbcType=VARCHAR},
+      matchid = #{matchid,jdbcType=VARCHAR},
+      cancelnotes = #{cancelnotes,jdbcType=VARCHAR},
+      sharenotes = #{sharenotes,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

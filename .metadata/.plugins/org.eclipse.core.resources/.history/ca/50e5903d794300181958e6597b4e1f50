@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baodanwang.mapper.OrdersandgoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.baodanwang.pojo.Ordersandgoods" >
+    <id column="ordersAndGoods_id" property="ordersandgoodsId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="good_id" property="goodId" jdbcType="VARCHAR" />
+    <result column="bulksAndGoods_id" property="bulksandgoodsId" jdbcType="VARCHAR" />
+    <result column="good_number" property="goodNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ordersAndGoods_id, order_id, good_id, bulksAndGoods_id, good_number
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.baodanwang.pojo.OrdersandgoodsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ordersandgoods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ordersandgoods
+    where ordersAndGoods_id = #{ordersandgoodsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ordersandgoods
+    where ordersAndGoods_id = #{ordersandgoodsId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.baodanwang.pojo.OrdersandgoodsExample" >
+    delete from ordersandgoods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.baodanwang.pojo.Ordersandgoods" >
+    insert into ordersandgoods (ordersAndGoods_id, order_id, good_id, 
+      bulksAndGoods_id, good_number)
+    values (#{ordersandgoodsId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{goodId,jdbcType=VARCHAR}, 
+      #{bulksandgoodsId,jdbcType=VARCHAR}, #{goodNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baodanwang.pojo.Ordersandgoods" >
+    insert into ordersandgoods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ordersandgoodsId != null" >
+        ordersAndGoods_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="goodId != null" >
+        good_id,
+      </if>
+      <if test="bulksandgoodsId != null" >
+        bulksAndGoods_id,
+      </if>
+      <if test="goodNumber != null" >
+        good_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ordersandgoodsId != null" >
+        #{ordersandgoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodId != null" >
+        #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="bulksandgoodsId != null" >
+        #{bulksandgoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodNumber != null" >
+        #{goodNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.baodanwang.pojo.OrdersandgoodsExample" resultType="java.lang.Integer" >
+    select count(*) from ordersandgoods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ordersandgoods
+    <set >
+      <if test="record.ordersandgoodsId != null" >
+        ordersAndGoods_id = #{record.ordersandgoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodId != null" >
+        good_id = #{record.goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulksandgoodsId != null" >
+        bulksAndGoods_id = #{record.bulksandgoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodNumber != null" >
+        good_number = #{record.goodNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ordersandgoods
+    set ordersAndGoods_id = #{record.ordersandgoodsId,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      good_id = #{record.goodId,jdbcType=VARCHAR},
+      bulksAndGoods_id = #{record.bulksandgoodsId,jdbcType=VARCHAR},
+      good_number = #{record.goodNumber,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baodanwang.pojo.Ordersandgoods" >
+    update ordersandgoods
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodId != null" >
+        good_id = #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="bulksandgoodsId != null" >
+        bulksAndGoods_id = #{bulksandgoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodNumber != null" >
+        good_number = #{goodNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ordersAndGoods_id = #{ordersandgoodsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baodanwang.pojo.Ordersandgoods" >
+    update ordersandgoods
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      good_id = #{goodId,jdbcType=VARCHAR},
+      bulksAndGoods_id = #{bulksandgoodsId,jdbcType=VARCHAR},
+      good_number = #{goodNumber,jdbcType=INTEGER}
+    where ordersAndGoods_id = #{ordersandgoodsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

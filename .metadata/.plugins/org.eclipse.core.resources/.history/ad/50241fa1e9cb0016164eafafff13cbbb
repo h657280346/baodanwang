@@ -1,0 +1,26 @@
+package com.migong;//包名
+
+public class RestTime {//定义一个类
+
+	static class countDown extends Thread{//继承Thread父类，是一个线程
+		int time;//定义时间变量
+		public countDown(int time){//构造方法
+			this.time=time;//调用time成员变量，为其赋值
+		}
+		public void run() {//定义时间改变方法run，无返回值
+			while(time>0){//当时间大于0，循环继续
+				System.out.println("还有"+time+"秒");//显示剩余时间
+				try {//try catch 纠错  错误提示//异常捕捉
+					sleep(1000);//休眠1000毫秒 改变一个时间数
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				time--;//时间减小
+			}
+			System.out.println("已运行完毕");//输出运行完毕
+		}
+		public int getTime(){//定义方法 ，time的get方法，用于其他类获取time的值
+			return time;//返回
+		}
+	}
+}

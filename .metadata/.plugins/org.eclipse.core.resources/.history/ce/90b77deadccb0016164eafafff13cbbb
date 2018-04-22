@@ -1,0 +1,5 @@
+package aaa;
+interface aaa {
+	final double PI=3.14;
+	public double Area();
+}

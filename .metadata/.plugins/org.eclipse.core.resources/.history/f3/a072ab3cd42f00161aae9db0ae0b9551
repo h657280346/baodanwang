@@ -1,0 +1,38 @@
+package thread;
+
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+
+public class TextAtomicReference {
+
+	static ArrayList<B> list = new ArrayList<B>();
+    static A a = new A(new B(-1));
+    static int i = 0;
+	static B b = new B(-1);
+	static AtomicReference<B> ar = new AtomicReference<B>(b);
+	public static void main(String[] args) {
+		for (; i < 1000; ++i) {
+			//创建1000个B类型对象，id为0到999，放到一个list中
+			B b1 = new B(i);
+			list.add(b1);	
+			}
+		for ( i = 0; i < 1000; ++i) {
+			new Thread(new Runnable() {
+				public void run() {
+					change(list.get(i-1));
+				}
+			}).start();
+			}
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println(b.getId());
+	}
+	public static void change(B b1){
+		ar.set(b1);//把b的引用用线程安全的方法换成b1
+		a.setB(b);
+//		a.setB(b1);线程不安全
+	}					
+}

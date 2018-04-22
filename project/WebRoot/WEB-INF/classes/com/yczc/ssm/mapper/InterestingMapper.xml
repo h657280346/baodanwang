@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yczc.ssm.mapper.InterestingMapper">
+	<insert id="addInteresting" parameterType="interesting" >
+		insert into interesting values(#{id},#{title},#{picture},#{introduction},#{time},#{author},0,#{priority},#{figure})
+	</insert>
+	
+	<delete id="deleteInteresting" parameterType="string">
+		delete from interesting where id = #{value}
+	</delete>
+	
+	<update id="updateInteresting" parameterType="interesting">
+		update interesting set title=#{title},picture=#{picture},introduction=#{introduction},author=#{author},priority=#{priority},figure=#{figure} where id=#{id}
+	</update>
+	
+	<update id="updateInterestingView" parameterType="string">
+		update interesting set view = view+1  where id=#{id}
+	</update>
+	<select id="findAllInteresting"  resultType="interesting">
+		select * from interesting order by priority desc
+	</select>
+	<select id="findInterestingById" parameterType="string" resultType="interesting">
+		select * from interesting where id = #{value}
+	</select>	
+	<select id="count" resultType="int">
+		select count(*) from interesting
+	</select>
+	
+	<select id="findInterestingByFigure"  resultType="interesting">
+		select * from interesting where figure is not null 
+	</select>
+	
+	
+</mapper>

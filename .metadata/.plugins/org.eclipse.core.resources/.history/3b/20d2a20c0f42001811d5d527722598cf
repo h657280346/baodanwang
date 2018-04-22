@@ -1,0 +1,22 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.baodanwang.mapper.VideoandimagesMapper;
+import com.baodanwang.pojo.Videoandimages;
+import com.baodanwang.service.VideoAndImageService;
+
+public class VideoAndImageServiceImpl implements VideoAndImageService {
+
+	@Autowired
+	private VideoandimagesMapper videoandimagesMapper = null;
+	
+	@Override
+	public List<Videoandimages> getVideoandimagesList(String sidx, String sord) throws Exception {
+		videoandimagesMapper.selectByExample(example);
+		return null;
+	}
+
+}

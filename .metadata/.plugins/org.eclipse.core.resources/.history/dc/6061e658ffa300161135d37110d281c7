@@ -1,0 +1,37 @@
+package xml;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+
+import org.jdom.Attribute;
+import org.jdom.Comment;
+import org.jdom.Document;
+import org.jdom.Element;
+
+public class XmlTest1 {
+
+	private String username;
+	private String password;
+	private String driver;
+	private String url;
+	private String sql;
+	private Connection conn;
+	Document document = new Document();
+	Element root = new Element("root");
+	public void getdata() throws Exception {
+		Properties pro = new Properties();
+		pro.load(new FileReader("./user.properties"));
+		username = pro.getProperty("username");
+		password = pro.getProperty("password");
+		driver = pro.getProperty("driver");
+		url = pro.getProperty("url");
+		driver = pro.getProperty("driver");
+		Class.forName(driver);
+		conn = DriverManager.getConnection(url, username, password);
+	}
+	
+}

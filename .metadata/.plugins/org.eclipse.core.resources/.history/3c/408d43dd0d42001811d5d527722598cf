@@ -1,0 +1,16 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import com.baodanwang.pojo.Videoandimages;
+import com.baodanwang.service.VideoAndImageService;
+
+public class VideoAndImageServiceImpl implements VideoAndImageService {
+
+	@Override
+	public List<Videoandimages> getVideoandimagesList(String sidx, String sord) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

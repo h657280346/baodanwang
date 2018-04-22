@@ -1,0 +1,9 @@
+package com.migong;
+
+public class Test {
+
+	public static void main(String[] args) {
+		new Maze();
+		new Restart();
+	}
+}

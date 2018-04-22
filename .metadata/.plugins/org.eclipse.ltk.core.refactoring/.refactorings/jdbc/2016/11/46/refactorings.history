@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;user.properties&apos; to &apos;JDOM&apos;&#x0D;&#x0A;- Original project: &apos;jdbc&apos;&#x0D;&#x0A;- Destination element: &apos;JDOM&apos;&#x0D;&#x0A;- Original element: &apos;user.properties&apos;" description="Copy file" destination="=JDOM" element1="user.properties" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1478420113576" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/我的文件/浪曦/MySQL数据库/第三方JAR包/mySql/mysql-connector-5.1.26.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/我的文件/浪曦/MySQL数据库/第三方JAR包/C3P0/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/我的文件/浪曦/MySQL数据库/第三方JAR包/SQLServer/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/我的文件/浪曦/lib/substance.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

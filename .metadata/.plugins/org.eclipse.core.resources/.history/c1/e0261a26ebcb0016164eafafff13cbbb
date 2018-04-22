@@ -1,0 +1,10 @@
+package com.migong;
+
+import javax.swing.JFrame;
+
+public class Exit extends JFrame{
+
+	public Exit(){
+		this.setBounds(150, 150, 100, 100);
+	}
+}

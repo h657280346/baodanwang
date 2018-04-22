@@ -1,0 +1,15 @@
+package ccc;
+import java.util.Scanner;
+public class Text3 {
+	private static String choice = "0";
+	public static void main(String[] args) {
+		ATM atm = new ATM();
+		Scanner sc = new Scanner(System.in);
+		do{
+		atm.enter();
+		System.out.println("还想再次登陆吗？（y/n)");
+		choice = sc.nextLine();
+		}while(choice.equals("y"));
+		System.out.println("感谢使用，再见！");
+	}
+}

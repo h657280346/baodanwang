@@ -1,0 +1,10 @@
+package com.baodanwang.service;
+
+import com.baodanwang.pojo.Homeimage;
+
+public interface HomeImageService {
+
+	public Homeimage getHomeImage() throws Exception;
+	
+	public int setHomeImage(Homeimage homeImage) throws Exception;
+}

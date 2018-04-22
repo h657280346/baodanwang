@@ -1,0 +1,119 @@
+package util;
+
+import java.awt.CheckboxGroup;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JEditorPane;
+import javax.swing.UIManager;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+
+public class LoginFrame extends JFrame implements ActionListener, HyperlinkListener{
+
+	
+	JEditorPane pane;
+	// 用于选择皮肤时传递参数
+	Object ob;
+    //用于截图时标记本地保存名 
+	int b=0;
+	public LoginFrame() throws Exception {
+		this.setLayout(null);
+		Font font = new Font("黑体",Font.BOLD,18);
+		Image image = ImageIO.read(new File("C:/Users/guiqi/Desktop/捕获.jpg"));
+		this.setIconImage(image);
+		this.setResizable(false);
+		this.setFont(font);
+		this.setTitle("QQ");
+		this.setBounds(200, 100, 550, 400);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JLabel jl1 = new JLabel("帐号");
+		jl1.setFont(font);
+		jl1.setBounds(140, 220, 50, 30);
+		JLabel jl2 = new JLabel("密码");
+		jl2.setFont(font);
+		jl2.setBounds(140, 260, 50, 30);
+		JComboBox jc = new JComboBox();
+		jc.setEditable(true);
+		jc.setFont(font);
+		jc.setBounds(200, 220, 200, 30);
+		JPasswordField jf = new JPasswordField();
+		jf.setFont(font);
+		jf.setBounds(200, 260, 200, 30);
+		JCheckBox jc1 = new JCheckBox("记住密码");
+		jc1.setBounds(195, 290, 100, 30);
+		JCheckBox jc2 = new JCheckBox("自动登录");
+		jc2.setBounds(295, 290, 100, 30);
+		JButton jb1 = new JButton("登录");
+		jb1.setBounds(200, 320, 200, 30);
+		JButton jb2 = new JButton("注册帐号");
+		jb2.setBounds(410, 220, 110, 30);
+		JButton jb3 = new JButton("找回密码");
+		jb3.setBounds(410, 260, 110, 30);
+		JPanel jp1 = new JPanel();
+		jp1.setBounds(0, 0, 550, 200);
+		JPanel jp2 = new JPanel();
+		jp2.setBounds(20, 220, 120, 120);
+		JLabel jl3 = new JLabel(new ImageIcon("C:/Users/guiqi/Desktop/83088FC20BC0F69991B4C147970538A4.jpg"));
+		jl3.setBounds(0, 0, 550, 200);
+		JLabel jl4 = new JLabel(new ImageIcon("C:/Users/guiqi/Desktop/halo-5-guardians-square-542x542-9eac3c6e038743c588ac6167ca2daa0d.jpg"));
+		jp1.add(jl3);
+		jp2.add(jl4);
+		this.add(jp1);
+		this.add(jp2);
+		this.add(jl1);
+		this.add(jl2);
+		this.add(jc);
+		this.add(jf);
+		this.add(jb1);
+		this.add(jb2);
+		this.add(jb3);
+		this.add(jc1);
+		this.add(jc2);
+		this.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					try {
+						UIManager.setLookAndFeel(new org.jvnet.substance.skin.SubstanceOfficeBlue2007LookAndFeel());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					LoginFrame frame = new LoginFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	@Override
+	public void hyperlinkUpdate(HyperlinkEvent arg0) {
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		
+	}
+
+}

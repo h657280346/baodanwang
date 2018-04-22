@@ -1,0 +1,13 @@
+package com.migong;
+
+public class Test {
+
+	public Test(){
+		new Maze();
+		new Restart();
+	}
+	public static void main(String[] args) {
+		new Maze();
+		new Restart();
+	}
+}

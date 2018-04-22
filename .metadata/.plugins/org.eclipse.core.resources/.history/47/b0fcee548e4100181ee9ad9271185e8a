@@ -1,0 +1,68 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.GoodsMapper;
+import com.baodanwang.pojo.Goods;
+import com.baodanwang.pojo.GoodsExample;
+import com.baodanwang.service.GoodsService;
+@Service("goodsService")
+public class GoodsServiceImpl implements GoodsService{
+
+	@Autowired
+	private GoodsMapper goodsMapper = null;
+	@Override
+	public List<Goods> getGoodList(String sidx, String sord) throws Exception {
+		GoodsExample example = new GoodsExample();
+		example.setOrderByClause(sidx+" "+sord);
+		List<Goods> goods = goodsMapper.selectByExample(example);
+		return goods;
+	}
+
+	@Override
+	public void deleteGood(String goodId) throws Exception {
+		goodsMapper.deleteByPrimaryKey(goodId);
+	}
+
+	@Override
+	public List<Goods> searchGood(String searchField, String searchString, String sidx, String sord)
+			throws Exception {
+		GoodsExample example = new GoodsExample();
+		GoodsExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx+" "+sord);
+		switch (searchField) {
+		case "store_id":
+			criteria.andStoreIdLike("%"+searchString+"%");
+			break;
+		case "good_id":
+			criteria.andGoodIdLike("%"+searchString+"%");
+			break;
+		case "good_name":
+			criteria.andGoodNameLike("%"+searchString+"%");
+			break;
+		case "good_showStatus":
+			criteria.andGoodShowstatusLike("%"+searchString+"%");
+			break;
+		case "good_price":
+			criteria.andGoodPriceEqualTo(searchString);
+			break;
+		case "good_advancePrice":
+			criteria.andGoodAdvancepriceEqualTo(searchString);
+			break;
+		case "good_describe":
+			criteria.andGoodDescribeLike("%"+searchString+"%");
+			break;
+		case "good_addTime":
+			criteria.andGoodAddtimeLike("%"+searchString+"%");
+			break;
+		default:
+			break;
+		}
+		List<Goods> stores = goodsMapper.selectByExample(example);
+		return stores;
+	}
+
+}

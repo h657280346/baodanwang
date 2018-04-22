@@ -1,0 +1,17 @@
+package com.baodanwang.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.pojo.Homeimage;
+import com.baodanwang.service.HomeImageService;
+
+@Service("homeImageService")
+public class HomeImageServiceImpl implements HomeImageService {
+
+	@Override
+	public Homeimage getHomeImage() throws Exception {
+		
+		return null;
+	}
+
+}

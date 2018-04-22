@@ -1,0 +1,103 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baodanwang.mapper.BulksandgoodsMapper;
+import com.baodanwang.mapper.GoodsMapper;
+import com.baodanwang.mapper.VideoandimagesMapper;
+import com.baodanwang.pojo.Bulksandgoods;
+import com.baodanwang.pojo.Goods;
+import com.baodanwang.pojo.GoodsExample;
+import com.baodanwang.pojo.Videoandimages;
+import com.baodanwang.service.GoodsService;
+
+@Service("goodsService")
+public class GoodsServiceImpl implements GoodsService {
+
+	@Autowired
+	private GoodsMapper goodsMapper = null;
+	@Autowired
+	private BulksandgoodsMapper bsulksandgoodsMapper = null;
+	@Autowired
+	private VideoandimagesMapper videoandimagesMapper = null;
+
+	@Override
+	public List<Goods> getGoodList(String sidx, String sord) throws Exception {
+		GoodsExample example = new GoodsExample();
+		example.setOrderByClause(sidx + " " + sord);
+		List<Goods> goods = goodsMapper.selectByExample(example);
+		return goods;
+	}
+
+	@Override
+	public void deleteGood(String goodId) throws Exception {
+		goodsMapper.deleteByPrimaryKey(goodId);
+	}
+
+	@Override
+	public List<Goods> searchGood(String searchField, String searchString, String sidx, String sord) throws Exception {
+		GoodsExample example = new GoodsExample();
+		GoodsExample.Criteria criteria = example.createCriteria();
+		example.setOrderByClause(sidx + " " + sord);
+		switch (searchField) {
+		case "store_id":
+			criteria.andStoreIdLike("%" + searchString + "%");
+			break;
+		case "good_id":
+			criteria.andGoodIdLike("%" + searchString + "%");
+			break;
+		case "good_name":
+			criteria.andGoodNameLike("%" + searchString + "%");
+			break;
+		case "good_showStatus":
+			criteria.andGoodShowstatusLike("%" + searchString + "%");
+			break;
+		case "good_price":
+			criteria.andGoodPriceEqualTo("%" + searchString + "%");
+			break;
+		case "good_advancePrice":
+			criteria.andGoodAdvancepriceEqualTo("%" + searchString + "%");
+			break;
+		case "good_describe":
+			criteria.andGoodDescribeLike("%" + searchString + "%");
+			break;
+		case "good_addTime":
+			criteria.andGoodAddtimeLike("%" + searchString + "%");
+			break;
+		default:
+			break;
+		}
+		List<Goods> goods = goodsMapper.selectByExample(example);
+		return goods;
+	}
+
+	@Override
+	public int insertGood(Goods good,String bulkId,String goodLimite) throws Exception {
+		int result = goodsMapper.insert(good);
+		Bulksandgoods bulksandgoods = new Bulksandgoods();
+		UUID bgId =  UUID.randomUUID();
+		bulksandgoods.setBgId(String.valueOf(bgId));
+		bulksandgoods.setBulkId(bulkId);
+		bulksandgoods.setGoodId(good.getGoodId());
+		bulksandgoods.setGoodLimite(goodLimite);
+		int result1 = bsulksandgoodsMapper.insert(bulksandgoods);
+		return result+result1;
+	}
+
+	@Override
+	public int insertGoodVideoAndImage(Videoandimages videoandimages) throws Exception {
+		int result = videoandimagesMapper.insert(videoandimages);
+		return result;
+	}
+
+	@Override
+	public Goods getGood(String goodId) throws Exception {
+		Goods good = goodsMapper.selectByPrimaryKey(goodId);
+		return good;
+	}
+
+}

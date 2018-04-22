@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.langsin.gui&apos; to &apos;QQ.SuperClient.src.com.langsin.gui&apos;&#x0D;&#x0A;- Original project: &apos;SuperClient&apos;&#x0D;&#x0A;- Original element: &apos;SuperClient/src/com.langsin.gui&apos;&#x0D;&#x0A;- Renamed element: &apos;SuperClient/src/QQ.SuperClient.src.com.langsin.gui&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.langsin.gui&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.langsin.gui" name="QQ.SuperClient.src.com.langsin.gui" qualified="false" references="true" stamp="1472563966362" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,14 @@
+package com.baodanwang.util;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class FileUpload {
+
+	private MultipartFile file;
+	private String fileName;
+
+	public FileUpload(MultipartFile file, String fileName) {
+		this.file = file;
+		this.fileName = fileName;
+	}
+}

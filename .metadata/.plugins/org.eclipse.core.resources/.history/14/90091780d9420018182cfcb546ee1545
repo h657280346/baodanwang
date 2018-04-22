@@ -1,0 +1,14 @@
+package com.baodanwang.service.impl;
+
+import com.baodanwang.pojo.Homeimage;
+import com.baodanwang.service.HomeImageService;
+
+public class HomeImageServiceImpl implements HomeImageService {
+
+	@Override
+	public Homeimage getHomeImage() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

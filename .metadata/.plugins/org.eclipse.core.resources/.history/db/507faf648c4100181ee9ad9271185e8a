@@ -1,0 +1,28 @@
+package com.baodanwang.service.impl;
+
+import java.util.List;
+
+import com.baodanwang.pojo.Goods;
+import com.baodanwang.service.GoodsService;
+
+public class GoodsServiceImpl implements GoodsService{
+
+	@Override
+	public List<Goods> getGoodList(String sidx, String sord) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteGood(String storeId) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Goods> searchGood(String searchField, String searchString, String sidx, String sord) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

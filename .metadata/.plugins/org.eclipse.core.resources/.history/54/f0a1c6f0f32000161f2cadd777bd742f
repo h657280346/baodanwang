@@ -1,0 +1,70 @@
+package ccc;
+import java.util.Scanner;
+public class ATM {
+	public static String usr= "657280346";
+	public static String password= "halo";
+	public static int count = 3;
+	public static Object usr1;
+	public static Object password1;
+	public static int money = 0;
+	public static String choice3 = "0";
+	static Scanner sc = new Scanner(System.in);
+	public static void enter(){
+		do{
+		System.out.println("输入账号");
+		String usr1 = sc.nextLine();
+		System.out.println("输入密码");
+		String password1 = sc.nextLine();
+		if(usr.equals(usr1)&&password.equals(password1)){
+			System.out.println("登录成功");
+			System.out.println("按1存钱，按2取钱，按3查询余额，按4修改密码");
+			int choice1 =sc.nextInt() ;
+			if(choice1==1){
+				save();
+			}else if(choice1==2){
+				take();
+			}else if(choice1==3){
+				System.out.println("余额为"+money);
+			}else{
+				change();
+			}
+		}else{
+			count--;
+			System.out.println("账号或密码错误，请重新输入（还有"+count+"次机会）");
+			if(count==0){
+				System.out.println("您已输错三次，请24小时后再试");
+			}
+		}
+		}while(((usr.equals(usr1)&&password.equals(password1)))&&count!=0);
+	}
+	public static void save(){
+		System.out.println("请输入存款金额");
+		int savemoney = sc.nextInt();
+		money+=savemoney;
+	}
+	public static void take(){
+		do{
+		System.out.println("请输入取款金额");
+		int takemoney =sc.nextInt();
+		if(takemoney<=money){
+		money+=takemoney;
+		System.out.println("取款成功，请拿好您的现金");
+		}else{
+			System.out.println("余额不足");
+			System.out.println("想重新输入取款金额吗？（y/n）"); 
+			choice3 = sc.next();
+		}
+		}while(choice3.equals("y"));
+	}
+	public static void change(){
+		System.out.println("请再输一遍密码");
+		String password2 = sc.nextLine();
+		if(password.equals(password2)){
+			System.out.println("请输入新密码");
+			password = sc.nextLine();
+		}else{
+			System.out.println("输入错误，修改失败");
+		}
+	}
+
+}

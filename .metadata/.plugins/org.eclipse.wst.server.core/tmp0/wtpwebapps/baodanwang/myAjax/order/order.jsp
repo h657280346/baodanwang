@@ -69,7 +69,7 @@
 									height : 'auto',
 									url : 'orderList.action',
 									editurl : "updataOrder.action",
-									colNames : [ '订单ID', '订单归属团购ID', '收货人编号',
+									colNames : [ '订单ID', '订单归属团购ID', '收货人ID',
 											'收货地区', '详细收货地址', '取货方式', '收货人电话', '收货人姓名',
 											'收货人微信号', '订单归属商铺ID', '订单备注',
 											'订单总价', '订单状态', '购买时间' ],

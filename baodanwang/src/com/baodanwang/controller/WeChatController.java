@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.serializer.SerializeConfig;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baodanwang.pojo.Bulks;
 import com.baodanwang.pojo.Goods;
 import com.baodanwang.pojo.Homeimage;
@@ -139,18 +141,23 @@ public class WeChatController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/getOrder", method = RequestMethod.POST)
+	@RequestMapping(value = "/getOrderList", method = RequestMethod.POST)
 	public JSON getOrder(HttpServletRequest req, HttpServletResponse rep) throws Exception {
 		String id = req.getParameter("id");
 		String type = req.getParameter("type");
+		String pageNum = req.getParameter("pageNum");
 		List<Orders> order = ordersService.getOrder(id, type);
-		JSONObject orders = JSONObject.fromObject(order);
+		List<Orders> currentOrder  = new ArrayList<Orders>();
+		for(int i=0;i<Integer.parseInt(pageNum);i++) {
+			currentOrder.add(order.get(i));
+		}
+		JSONObject orders = JSONObject.fromObject(currentOrder);
 		return orders;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/insertBulk", method = RequestMethod.POST)
-	public JSON insertBulk(HttpServletRequest req, HttpServletResponse rep) throws Exception {
+	public com.alibaba.fastjson.JSONObject insertBulk(HttpServletRequest req, HttpServletResponse rep) throws Exception {
 		String storeId = req.getParameter("storeId");
 		String bulkTitle = req.getParameter("bulkTitle");
 		String bulkAnnouncement = req.getParameter("bulkAnnouncement");
@@ -166,6 +173,7 @@ public class WeChatController {
 		String addTime = sdf.format(date);
 		// 转换商品列表字符串
 		JSONArray jsonArray = JSONArray.fromObject(goodsList);
+		com.alibaba.fastjson.JSONObject goodsId  = new com.alibaba.fastjson.JSONObject(jsonArray.size(),true);
 		for (int i = 0; i < jsonArray.size(); i++) {
 			UUID goodId = UUID.randomUUID();
 			JSONObject object = jsonArray.getJSONObject(i);
@@ -179,6 +187,7 @@ public class WeChatController {
 			good.setStoreId(storeId);
 			good.setGoodShowstatus("0");
 			goodsService.insertGood(good, String.valueOf(bulkId), object.getString("goodLimite"));
+			goodsId.put("goodId", String.valueOf(bulkId));
 		}
 		Bulks bulk = new Bulks();
 		bulk.setBulkId(String.valueOf(bulkId));
@@ -201,7 +210,8 @@ public class WeChatController {
 		} else {
 			datas.accumulate("result", "团购创建失败");
 		}
-		return datas;
+		com.alibaba.fastjson.JSONObject.toJSONString(SerializeConfig.getGlobalInstance(), SerializerFeature.QuoteFieldNames);
+		return goodsId;
 
 	}
 
@@ -234,4 +244,11 @@ public class WeChatController {
 			bulksService.updataBulk(bulk);
 		}
 	}
+	
+	@RequestMapping(value = "/updataBulk", method = RequestMethod.POST)
+	public JSON upDataBulk(HttpServletRequest req, HttpServletResponse rep) throws Exception{
+		return null;
+		
+	}
+	
 }

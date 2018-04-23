@@ -5,7 +5,7 @@
     <id column="bg_id" property="bgId" jdbcType="VARCHAR" />
     <result column="good_id" property="goodId" jdbcType="VARCHAR" />
     <result column="bulk_id" property="bulkId" jdbcType="VARCHAR" />
-    <result column="good_limite" property="goodLimite" jdbcType="INTEGER" />
+    <result column="good_limite" property="goodLimite" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -102,7 +102,7 @@
     insert into bulksandgoods (bg_id, good_id, bulk_id, 
       good_limite)
     values (#{bgId,jdbcType=VARCHAR}, #{goodId,jdbcType=VARCHAR}, #{bulkId,jdbcType=VARCHAR}, 
-      #{goodLimite,jdbcType=INTEGER})
+      #{goodLimite,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.baodanwang.pojo.Bulksandgoods" >
     insert into bulksandgoods
@@ -131,7 +131,7 @@
         #{bulkId,jdbcType=VARCHAR},
       </if>
       <if test="goodLimite != null" >
-        #{goodLimite,jdbcType=INTEGER},
+        #{goodLimite,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -154,7 +154,7 @@
         bulk_id = #{record.bulkId,jdbcType=VARCHAR},
       </if>
       <if test="record.goodLimite != null" >
-        good_limite = #{record.goodLimite,jdbcType=INTEGER},
+        good_limite = #{record.goodLimite,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -166,7 +166,7 @@
     set bg_id = #{record.bgId,jdbcType=VARCHAR},
       good_id = #{record.goodId,jdbcType=VARCHAR},
       bulk_id = #{record.bulkId,jdbcType=VARCHAR},
-      good_limite = #{record.goodLimite,jdbcType=INTEGER}
+      good_limite = #{record.goodLimite,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -181,7 +181,7 @@
         bulk_id = #{bulkId,jdbcType=VARCHAR},
       </if>
       <if test="goodLimite != null" >
-        good_limite = #{goodLimite,jdbcType=INTEGER},
+        good_limite = #{goodLimite,jdbcType=VARCHAR},
       </if>
     </set>
     where bg_id = #{bgId,jdbcType=VARCHAR}
@@ -190,7 +190,7 @@
     update bulksandgoods
     set good_id = #{goodId,jdbcType=VARCHAR},
       bulk_id = #{bulkId,jdbcType=VARCHAR},
-      good_limite = #{goodLimite,jdbcType=INTEGER}
+      good_limite = #{goodLimite,jdbcType=VARCHAR}
     where bg_id = #{bgId,jdbcType=VARCHAR}
   </update>
 </mapper>

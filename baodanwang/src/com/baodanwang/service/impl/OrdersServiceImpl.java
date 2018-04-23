@@ -82,11 +82,12 @@ public class OrdersServiceImpl implements OrdersService {
 	@Override
 	public List<Orders> getOrder(String id, String type) throws Exception {
 		OrdersExample example = new OrdersExample();
+		example.setOrderByClause("order_addTime desc");
 		OrdersExample.Criteria criteria = example.createCriteria();
 		if (type.equals("user")) {
 			criteria.andUserIdEqualTo(id);
 		} else {
-			criteria.andOrderIdEqualTo(id);
+			criteria.andStoreIdEqualTo(id);
 		}
 		List<Orders> orders = ordersMapper.selectByExample(example);
 		return orders;

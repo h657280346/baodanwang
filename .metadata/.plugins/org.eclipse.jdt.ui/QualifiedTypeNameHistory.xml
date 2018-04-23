@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="com.baodanwang.util.OpenidBean"/>
 <fullyQualifiedTypeName name="com.baodanwang.util.WXUtil"/>
 <fullyQualifiedTypeName name="com.baodanwang.mapper.HomeimageMapper"/>
 <fullyQualifiedTypeName name="com.baodanwang.pojo.HomeimageExample"/>
@@ -21,7 +19,6 @@
 <fullyQualifiedTypeName name="com.baodanwang.service.OrdersService"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
 <fullyQualifiedTypeName name="javassist.bytecode.Descriptor.Iterator"/>
 <fullyQualifiedTypeName name="java.io.File"/>
@@ -39,14 +36,12 @@
 <fullyQualifiedTypeName name="net.sf.json.JSON"/>
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="com.alibaba.fastjson.JSONArray"/>
-<fullyQualifiedTypeName name="com.alibaba.fastjson.JSONObject"/>
 <fullyQualifiedTypeName name="net.sf.json.JSONArray"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.aspectj.ajde.ui.StructureViewProperties.Sorting"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
 <fullyQualifiedTypeName name="com.baodanwang.util.FileUpload"/>
 <fullyQualifiedTypeName name="com.baodanwang.mapper.BulksMapper"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.baodanwang.mapper.GoodsMapper"/>
 <fullyQualifiedTypeName name="com.baodanwang.service.GoodsService"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="com.baodanwang.service.BulksService"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.baodanwang.pojo.Bulks"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.alibaba.fastjson.serializer.SerializeConfig"/>
+<fullyQualifiedTypeName name="com.alibaba.fastjson.serializer.SerializerFeature"/>
+<fullyQualifiedTypeName name="com.alibaba.fastjson.JSONObject"/>
 </qualifiedTypeNameHistroy>
